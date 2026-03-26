@@ -1,0 +1,342 @@
+.posts-container {
+    display: grid;
+    inline-size: 100%;
+    overflow-y: auto;
+
+}
+
+
+/* Скрытие полосы прокрутки */
+.no_lags_no_scrollbar {
+    scrollbar-width: none;
+
+    /* ЧТОБ ПРИ СКРОЛЛЕ СТРАНИЦА НЕ ЛАГАЛА
+    /* Для iOS чтобы скролл был нативным */
+    -webkit-overflow-scrolling: touch;
+    /* Включаем аппаратное ускорение */
+    transform: translateZ(0);
+}
+
+/* Скрытие полосы прокрутки (опционально) */
+.no_lags_no_scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+.post {
+    background-color: aqua;
+    inline-size: 100%;
+}
+
+.post-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    position: relative; /* для контекстного меню */
+}
+
+.author-profile__link {
+    display: inline-flex;
+    align-items: center;
+    color: #000; /* Можно еще подумать над цветами */
+    font-family: Arial, sans-serif; /* И над этим */
+    margin-inline-end: 5px;
+}
+
+.author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover; /* чтобы изображение  не искажалось */
+}
+
+.author-name {
+    font-weight: bold;
+}
+
+.post-context__menu-btn {
+    cursor: pointer;
+    inline-size: 38px;
+    block-size: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.post-context__menu {
+    background-color: blue;
+    position: absolute; /* надо сделать так чтобы было вверху справа поста н
+    о если пост слишком низко и меню не помещается 
+    то он максимум доходило до низа posts_container или типо того */
+    top: 3px;
+    right: 3px;
+    display: none;
+    z-index: 999;
+}
+
+.post-context__menu.active {
+    display: block;
+}
+
+.post-context__menu ul {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ну а за следующие 3 селектора мне минимум 3 с плюсом */
+/*.post-context__menu-btn:active + .post-context__menu {
+    display: flex;
+}
+
+.post-context__menu:hover {
+    display: flex;
+}
+
+.post-context__menu:not(:hover) {
+    display: none;
+}
+*/
+
+.post__images {
+    position: relative;
+    overflow: hidden;
+}
+
+.post__images .scroll-btn {
+    background-color: rgb(0, 0, 0, 0.3);
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 20%;
+    opacity: 0;
+    z-index: 1; /* чтоб встал перед списком а не за ним */
+    cursor: pointer;
+    transition: opacity 0.4s ease;
+    color: white;
+}
+
+.post__images .left {
+    left: 0;
+}
+
+.post__images .right {
+    right: 0;
+}
+
+.post__images .left:hover,
+.post__images .right:hover  {
+    opacity: 1;
+}
+
+.post__images .galleryTrack {
+    display: flex;
+    
+
+    scroll-snap-type: x mandatory; /* привязка скрола к оси x */
+    scroll-behavior: smooth; /* делает переключение мягким */
+    overflow-x: auto;
+
+    
+}
+
+.galleryTrack:not(:has(:nth-child(2))) ~ .scroll-btn {
+    display: none;
+}
+
+.galleryTrack li {
+    position: relative;
+    min-width: 100%;
+    height: 100%;
+    background-color: #f0f0f0; /* Фон пока грузится изображение */
+    aspect-ratio: 16 / 9; /* Соотношение сторон 16:9 */
+
+    scroll-snap-align: center;
+}
+
+.galleryTrack img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    inline-size: 100%;
+    max-inline-size: 100%;
+    block-size: 100%;
+    max-block-size: 100%;
+    object-fit: cover; /* Изображение покрывает всю область, обрезаясь при необходимости */
+}
+/*
+.post__images-count__container {
+    position: absolute;
+    overflow: hidden;
+    z-index: 1;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.post__images-count__container .gallery-circleTrack {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+
+    scroll-snap-type: x mandatory; /* привязка скрола к оси x */
+    /*scroll-behavior: smooth; /* делает переключение мягким */
+    /*overflow-x: auto;
+
+    
+}
+
+.gallery-circleTrack li {
+    min-width: 10px;
+    height: 10px;
+    aspect-ratio: 1 / 1;
+    background-color: pink;
+    border-radius: 50%;
+    border: 2px solid purple;
+
+    transform-origin: center;
+    transition: min-width 0.3s ease, height 0.3s ease;
+}
+
+.gallery-circleTrack li.active {
+    min-width: 15px;
+    height: 15px;
+    border-width: 3.5px;
+}*/
+
+
+
+
+
+.text-container {
+    margin: 5px;
+}
+
+.text-content {
+    
+}
+
+.text__overflow {
+    /* Скрытие текста после n строк */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Количество строк */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 3.6em; /* line-height * line-clamp */ /* line-height в em единицах но ее нету так как я если ее добавляю она увеличивает размер строки а я пока не задумывался нужно ли мне это */
+}
+
+.text__overflow.active { /* ох намудрил я тут с этими классами */
+    -webkit-line-clamp: unset;
+    max-height: none;
+}
+
+.text-container .showMoreBtn {
+    cursor: pointer;
+    color: rebeccapurple;
+}
+
+
+
+
+
+
+
+.post-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.reaction {
+    display: flex;
+    align-items: center;
+}
+
+.reaction__button {
+    inline-size: 38px;
+    block-size: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid transparent; /* невидимая граница */
+    transition: border 0.3s ease; /* если граница будет менятся она сделает это плавно */
+    background-color: transparent;
+    cursor: pointer; /* меняет мышку на палец */
+}
+
+.post__comments-btn {
+    background-color: red;
+}
+
+.like-icon .main-body {
+  fill: transparent;
+  transition: fill 0.3s ease;
+}
+
+.like-icon .core {
+  fill: transparent;
+  transition: fill 0.3s ease 0.03s;
+}
+
+.like-icon > .sparks {
+  opacity: 0;
+}
+
+.like-icon:hover .core {
+  fill: var(--heart-contour);
+  transition: fill 0.3s ease;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--heart-contour);
+  transition: fill 0.3s ease 0.05s;
+}
+
+.like-icon:active .core {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s ease;
+}
+
+.like-icon:active .main-body {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s ease 0.05s;
+}
+
+.like-icon.is-liked .core {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s ease;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s ease 0.05s;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s ease 0.06s;
+}
+
+.like-icon:not(.is-liked) .contour {
+  transition: fill 0.1s linear;
+}
+
+@media (max-width: 768px) {
+    :root {
+        --size-posts-container: calc((700 / 1440) * 100dvw);
+    }
+
+    .post__images .scroll-btn {
+        display: none;
+    }
+}
+
+@media (max-width: 376px) {
+    :root {
+        --size-posts-container: 100dvw;
+    }
+}

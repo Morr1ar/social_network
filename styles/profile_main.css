@@ -1,0 +1,50 @@
+.main {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr min-content;
+    grid-template-rows: min-content 1fr;
+    background-color: orange;
+    inline-size: var(--main-size);
+    block-size: calc(100vh - var(--header-height));
+    overflow: hidden; /* сколько мучений чтоб это заработало */
+
+    grid-template-areas: 
+    "profileHeader mainSidebar"
+    "postsContainer mainSidebar";
+}
+
+.profileHeader {
+    grid-area: profileHeader;
+}
+
+.posts-container {
+    grid-area: postsContainer;
+}
+
+.main__sidebar {
+    grid-area: mainSidebar;
+}
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+    
+}
+
+@media (max-width: 376px) {
+    .main {
+        grid-template-columns: 1fr;
+        grid-template-rows: min-content 1fr min-content;
+
+        grid-template-areas: 
+        "profileHeader"
+        "postsContainer"
+        "mainSidebar";
+    }
+}

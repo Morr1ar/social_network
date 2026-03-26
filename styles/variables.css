@@ -1,0 +1,12 @@
+:root {
+    --main-size: clamp(250px, 100dvw, 700px); /* с нижней границей возможно не совсем поумному но что умеем то могём */
+    --header-height: 52.4px; /* блоку мэйн нужна точная высота а значит она нужна и хэдеру */
+    --logo-size: 60px;
+    --sidebar-width: 164px; /* может надо поменять на чтото заумное */
+    --sidebar-height: 48px;
+    --size-posts-container: calc((500 / 1440) * 100dvw); /* взято из проекта "Закрывающий тег" */
+    --theme-color: #000;
+    --heart-contour: var(--theme-color);
+    --animation-fill-color: #FF0000;
+    --translateX-image: 0;
+}

@@ -1,0 +1,31 @@
+@keyframes contour-animation {
+    from {
+        scale: 1;
+    }
+
+    to {
+        scale: 1.25;
+    }
+}
+
+@keyframes sparks-visible {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.like-icon > .heart {
+    transform-origin: center; /* чтобы анимация шла равномерно из центра а не вниз вправо */
+}
+
+.like-icon.is-liked > .heart {
+    animation: contour-animation 0.3s ease-in 0.1s;
+}
+
+.like-icon.is-liked > .sparks {
+    animation: sparks-visible 0.3s ease-in 0.3s;
+}

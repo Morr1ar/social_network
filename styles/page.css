@@ -1,0 +1,45 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    background-color: red;
+    inline-size: var(--main-size);
+    max-block-size: var(--header-height);
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.logo__link {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.logo {
+    max-height: var(--logo-size);
+}
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+    
+}
+
+@media (max-width: 376px) {
+    
+}

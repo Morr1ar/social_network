@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Социальная сеть</title>
+    <link rel="stylesheet" href="./styles/variables.css" />
+    <link rel="stylesheet" href="./styles/globals.css" />
+    <link rel="stylesheet" href="./styles/page.css" />
+    <link rel="stylesheet" href="./styles/profile_main.css" />
+    <link rel="stylesheet" href="./styles/profile_header.css" />
+    <link rel="stylesheet" href="./styles/posts_container.css" />
+    <link rel="stylesheet" href="./styles/main_sidebar.css" />
+    <link rel="stylesheet" href="./styles/animations.css" />
+  </head>
+  <body class="page">
+    <header class="header">
+      <a class="logo__link" href="">
+        <img src="/images/StitchSVG.svg" alt="Логотип сайта" class="logo">
+        <span class="logo__name">Project1 version1 model-"NL-X"</span>
+      </a>
+    </header>
+    <main class="main">
+        <header class="profileHeader">
+          <div class="OwnerPageCover">
+
+          </div>
+          <div class="profileHeader__in">
+            <div class="profileHeader__ava">
+              <img class="profile-avatar" src="" alt="Аватар владельца страницы">
+            </div>
+            <div class="profileHeader__main">
+              <div class="profileHeader__info">
+                <span class="profile-name"></span>
+                <div class="profile__info">
+                  <div>
+                    <span id="prifile-country" class="profile__info-item"></span>
+                    <span id="moreDetailesBtn" class="profile__info-item">подробнее</span>
+                  </div>
+                  <span id="prifile-bio"></span>
+                </div>
+              </div>
+              <div class="profileHeaderActions">
+                <a href="">
+                  <span>Редактировать</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <section class="posts-container no_lags_no_scrollbar"> <!-- хотя вроде можно вместо section какойто div с role="feed"-->
+
+        </section>
+        <nav class="main__sidebar">
+            <ul>
+                <li class="main__sidebar-item keywords_item">
+                    <a href="profile.html">
+                      <img src="/images/YodaSVG.svg" alt="" class="keywords__img">
+                      <span>Профиль</span>
+                    </a>
+                </li>
+                <li class="main__sidebar-item keywords_item">
+                    <a href="index.html">
+                      <img src="/images/LuffySVG.svg" alt="" class="keywords__img">
+                      <span>Лента</span>
+                    </a>
+                </li>
+                <li class="main__sidebar-item keywords_item">
+                    <a href="messenger.html">
+                      <img src="/images/TomAndJerrySVG.svg" alt="" class="keywords__img">
+                      <span>Мессенджер</span>
+                    </a>
+                </li>
+                <li class="main__sidebar-item keywords_item">
+                    <a href="settings.html">
+                      <img src="/images/DragonSVG.svg" alt="" class="keywords__img">
+                      <span>Настройки</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </main>
+
+    <template id="post-template">
+        <article class="post">
+          <div class="post-details">
+            <a href="" class="author-profile__link">
+                <img class="author-avatar" src="" alt="Аватар автора поста">
+                <span class="author-name"></span>
+            </a>
+            <button class="post-context__menu-btn">
+              <span class="menu_btn">
+                ☰
+              </span>
+            </button>
+            <div class="post-context__menu">
+              <ul>
+                <li class="keywords_item">
+                  <span class="keywords">Копировать ссылку</span>
+                </li>
+                <li class="keywords_item">
+                  <span class="keywords">Не интересно</span>
+                </li>
+                <li class="keywords_item">
+                  <span class="keywords">Пожаловаться</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="post__images">
+            <ul class="galleryTrack no_lags_no_scrollbar">
+            
+            </ul>
+            <div class="post__images-count__container" style="display: none;">
+              <ul class="gallery-circleTrack no_lags_no_scrollbar">
+                
+              </ul>
+            </div>
+            <button class="scroll-btn left" onclick="scrollGallery(this, -1)">&#10094;</button>
+            <button class="scroll-btn right" onclick="scrollGallery(this, 1)">&#10095;</button>
+          </div>
+          
+          
+          <div class="text-container">
+            <p class="text-content text__overflow"></p>
+            <button class="showMoreBtn" style="display: none;">подробнее</button>
+          </div>
+
+          <div class="post-details">
+            <div class="post-actions">
+              <div class="like__content reaction">
+                <button class="post__icon-button reaction__button" type="button">
+                  <svg class="like-icon" width="39" height="36" viewBox="0 0 39 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g class="heart">
+                      <path class="contour" d="M12 6H9V9H12V6ZM15 6H12V9H15V6ZM9 9H6V12H9V9ZM9 12H6V15H9V12ZM9 15H6V18H9V15ZM18 6H15V9H18V6ZM12 18H9V21H12V18ZM15 21H12V24H15V21ZM18 24H15V27H18V24ZM27 6H30V9H27V6ZM24 6H27V9H24V6ZM30 9H33V12H30V9ZM30 12H33V15H30V12ZM30 15H33V18H30V15ZM21 6H24V9H21V6ZM27 18H30V21H27V18ZM24 21H27V24H24V21ZM21 24H24V27H21V24ZM21 27H18V30H21V27ZM21 9H18V12H21V9Z" fill="var(--heart-contour)"/>
+                      <path class="main-body" d="M12 9H9V12H12V9ZM15 12H12V15H15V12ZM18 9H15V12H18V9ZM12 15H9V18H12V15ZM15 15H12V18H15V15ZM15 18H12V21H15V18ZM18 12H15V15H18V12ZM18 21H15V24H18V21ZM18 18H15V21H18V18ZM27 9H30V12H27V9ZM24 9H27V12H24V9ZM27 12H30V15H27V12ZM24 12H27V15H24V12ZM21 9H24V12H21V9ZM27 15H30V18H27V15ZM24 15H27V18H24V15ZM24 18H27V21H24V18ZM21 12H24V15H21V12ZM21 21H24V24H21V21ZM21 18H24V21H21V18ZM21 21H18V24H21V21ZM21 24H18V27H21V24Z" fill="none"/>          
+                      <path class="core" d="M18 15H15V18H18V15ZM21 15H24V18H21V15ZM21 15H18V18H21V15ZM21 12H18V15H21V12ZM21 18H18V21H21V18Z" fill="none"/>
+                    </g>
+                    <path class="sparks" d="M36 13H39V16H36V13ZM27 27H30V30H27V27ZM18 33H21V36H18V33ZM9 27H12V30H9V27ZM24 0H27V3H24V0ZM33 3H36V6H33V3ZM3 3H6V6H3V3ZM12 0H15V3H12V0ZM0 13H3V16H0V13Z" fill="var(--animation-fill-color)"/>
+                  </svg>
+                </button>
+                <span class="likesCount"></span>
+              </div>
+              <div class="comments__content reaction">
+                <button class="post__comments-btn reaction__button" type="button">
+
+                </button>
+                <span class="commentsCount"></span>
+              </div>
+            </div>
+            <p>time</p>
+          </div>
+        </article>
+    </template>
+    <script src="./scripts/profile_script.js"></script>
+    <script src="./scripts/posts_script.js"></script>
+  </body>
+</html>

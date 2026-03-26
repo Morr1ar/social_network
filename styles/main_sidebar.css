@@ -1,0 +1,38 @@
+.main__sidebar ul{
+    height: min-content;
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+}
+
+.keywords_item {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.main__sidebar-item a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px; /* как padding у этого элемента keywords_item */
+}
+
+.keywords__img {
+    inline-size: 38px;
+    block-size: 38px;
+}
+
+@media (max-width: 768px) {
+    
+}
+
+@media (max-width: 376px) {
+    .main__sidebar ul{
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .main__sidebar-item a {
+        flex-direction: column;
+    }
+}

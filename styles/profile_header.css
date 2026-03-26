@@ -1,0 +1,51 @@
+.profileHeader {
+    display: flex;
+    flex-direction: column;
+}
+
+.profileHeader__in {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-template-rows: 1fr;
+    gap: 10px; /* потом скорее всего надо будет на переменную поменять */
+}
+
+.profileHeader__ava {
+    background-color: purple;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-avatar {
+    background-color: blue;
+    width: 100px; /* потом скорее всего надо будет на переменную поменять */
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profileHeader__main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.profileHeader__info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile__info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile__info div {
+    display: flex;
+    flex-direction: row;
+}
