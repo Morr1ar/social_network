@@ -68,3 +68,19 @@ ol {
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background-color: #D9D9D9;
 }
+
+/* Скрытие полосы прокрутки */
+.no_lags_no_scrollbar {
+    scrollbar-width: none;
+
+    /* ЧТОБ ПРИ СКРОЛЛЕ СТРАНИЦА НЕ ЛАГАЛА
+    /* Для iOS чтобы скролл был нативным */
+    -webkit-overflow-scrolling: touch;
+    /* Включаем аппаратное ускорение */
+    transform: translateZ(0);
+}
+
+/* Скрытие полосы прокрутки (опционально) */
+.no_lags_no_scrollbar::-webkit-scrollbar {
+  display: none;
+}

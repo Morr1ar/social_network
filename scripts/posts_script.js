@@ -77,7 +77,7 @@ const postsData = [
 
 // Функция для рендера всех постов
 function renderPosts(posts) {
-    const postsContainer = document.querySelector('.posts-container');
+    const postsContainer = document.querySelector('.postsContainer');
     postsContainer.innerHTML = ''; // Очищаем контейнер
     
     posts.forEach(post => {

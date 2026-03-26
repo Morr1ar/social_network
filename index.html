@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./styles/variables.css" />
     <link rel="stylesheet" href="./styles/globals.css" />
     <link rel="stylesheet" href="./styles/page.css" />
-    <link rel="stylesheet" href="./styles/lent_main.css" />
+    <link rel="stylesheet" href="./styles/main_with_posts.css" />
     <link rel="stylesheet" href="./styles/posts_container.css" />
     <link rel="stylesheet" href="./styles/main_sidebar.css" />
     <link rel="stylesheet" href="./styles/animations.css" />
@@ -20,37 +20,39 @@
       </a>
     </header>
     <main class="main">
-        <section class="posts-container no_lags_no_scrollbar"> <!-- хотя вроде можно вместо section какойто div с role="feed"-->
+      <div class="profileHeader_and_postsContainer no_lags_no_scrollbar">
+        <section class="postsContainer"> <!-- хотя вроде можно вместо section какойто div с role="feed"-->
 
         </section>
-        <nav class="main__sidebar">
-            <ul>
-                <li class="main__sidebar-item keywords_item">
-                  <a href="profile.html">
-                    <img src="/images/YodaSVG.svg" alt="" class="keywords__img">
-                    <span>Профиль</span>
-                  </a>
-                </li>
-                <li class="main__sidebar-item keywords_item">
-                  <a href="index.html">
-                    <img src="/images/LuffySVG.svg" alt="" class="keywords__img">
-                    <span>Лента</span>
-                  </a>
-                </li>
-                <li class="main__sidebar-item keywords_item">
-                  <a href="messenger.html">
-                    <img src="/images/TomAndJerrySVG.svg" alt="" class="keywords__img">
-                    <span>Мессенджер</span>
-                  </a>
-                </li>
-                <li class="main__sidebar-item keywords_item">
-                  <a href="settings.html">
-                    <img src="/images/DragonSVG.svg" alt="" class="keywords__img">
-                    <span>Настройки</span>
-                  </a>
-                </li>
-            </ul>
-        </nav>
+      </div>
+      <nav class="main__sidebar">
+          <ul>
+              <li class="main__sidebar-item keywords_item">
+                <a href="profile.html">
+                  <img src="/images/YodaSVG.svg" alt="" class="keywords__img">
+                  <span>Профиль</span>
+                </a>
+              </li>
+              <li class="main__sidebar-item keywords_item">
+                <a href="index.html">
+                  <img src="/images/LuffySVG.svg" alt="" class="keywords__img">
+                  <span>Лента</span>
+                </a>
+              </li>
+              <li class="main__sidebar-item keywords_item">
+                <a href="messenger.html">
+                  <img src="/images/TomAndJerrySVG.svg" alt="" class="keywords__img">
+                  <span>Мессенджер</span>
+                </a>
+              </li>
+              <li class="main__sidebar-item keywords_item">
+                <a href="settings.html">
+                  <img src="/images/DragonSVG.svg" alt="" class="keywords__img">
+                  <span>Настройки</span>
+                </a>
+              </li>
+          </ul>
+      </nav>
     </main>
 
     <template id="post-template">
