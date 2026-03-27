@@ -7,7 +7,7 @@ const profileData =
     friends: [],
     subscriptions: [],
     country: 'Ice Kingdom',
-    birth_date: '' // дата рождения
+    birth_date: '1204.01.01' // дата рождения надо доработать
 };
 
 // Функция для рендера профиля
@@ -23,8 +23,29 @@ function insertProfileHeader(profile) {
     profileHeaderIn.querySelector('.profile-avatar').src = profile['avatar'];
     profileHeaderIn.querySelector('.profile-avatar').loading = 'lazy';
     profileHeaderIn.querySelector('.profile-name').textContent = profile['name'];
-    document.getElementById('prifile-country').textContent = profile['country']
-    document.getElementById('prifile-bio').textContent = profile['bio']
+    document.getElementById('profile-user_name').textContent = profile['user_name'];
+    document.getElementById('profile-country').textContent = profile['country'];
+    document.getElementById('profile-birth').textContent = profile['birth_date'];
+    document.getElementById('profile-friendsCnt').textContent = profile['friends'].length;
+    document.getElementById('profile-subscriptionsCnt').textContent = profile['subscriptions'].length;
+    document.getElementById('profile-bio').textContent = profile['bio'];
+
+    profileHeaderIn.querySelector('.context__menu-btn').addEventListener('click', function (evt) {
+        // Останавливаем событие - оно не пойдет дальше к родителю
+        evt.stopPropagation(); // ну... возможно это костыль а может и нет
+
+        profileHeaderIn.querySelector('.context__menu').classList.add('active');
+
+        profileHeaderIn.querySelector('.context__menu').addEventListener('mouseleave', function (evt) {
+            profileHeaderIn.querySelector('.context__menu').classList.remove('active');
+        });
+
+        document.addEventListener('touchstart', function (evt) {
+            if (!evt.target.closest('.context__menu')) {
+                profileHeaderIn.querySelector('.context__menu').classList.remove('active');
+            }
+        });
+    });
 };
 
 // Инициализация при загрузке страницы

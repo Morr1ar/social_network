@@ -101,19 +101,19 @@ function createPost(post) {
     profile.querySelector('.author-avatar').alt = post['author']['name'];
     profile.querySelector('.author-name').textContent = post['author']['name'];
 
-    postElement.querySelector('.post-context__menu-btn').addEventListener('click', function (evt) {
+    postElement.querySelector('.context__menu-btn').addEventListener('click', function (evt) {
         // Останавливаем событие - оно не пойдет дальше к родителю
         evt.stopPropagation(); // ну... возможно это костыль а может и нет
 
-        postElement.querySelector('.post-context__menu').classList.add('active');
+        postElement.querySelector('.context__menu').classList.add('active');
 
-        postElement.querySelector('.post-context__menu').addEventListener('mouseleave', function (evt) {
-            postElement.querySelector('.post-context__menu').classList.remove('active');
+        postElement.querySelector('.context__menu').addEventListener('mouseleave', function (evt) {
+            postElement.querySelector('.context__menu').classList.remove('active');
         });
 
         document.addEventListener('touchstart', function (evt) {
-            if (!evt.target.closest('.post-context__menu')) {
-                postElement.querySelector('.post-context__menu').classList.remove('active');
+            if (!evt.target.closest('.context__menu')) {
+                postElement.querySelector('.context__menu').classList.remove('active');
             }
         });
     });

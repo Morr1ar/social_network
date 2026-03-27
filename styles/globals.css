@@ -84,3 +84,34 @@ ol {
 .no_lags_no_scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* КНОПКА МЕНЮ ЕСТЬ КАК НА ПОСТАХ ТАК И НА ШАПКЕ ПРОФИЛЯ */
+.context__menu-btn {
+    cursor: pointer;
+    inline-size: 38px;
+    block-size: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.context__menu {
+    background-color: blue;
+    position: absolute; /* надо сделать так чтобы было вверху справа поста н
+    о если пост слишком низко и меню не помещается 
+    то он максимум доходило до низа posts_container или типо того */
+    top: 3px;
+    right: 3px;
+    display: none;
+    z-index: 999;
+}
+
+.context__menu.active {
+    display: block;
+}
+
+.context__menu ul {
+    display: flex;
+    flex-direction: column;
+}

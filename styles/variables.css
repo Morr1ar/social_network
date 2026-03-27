@@ -9,4 +9,8 @@
     --heart-contour: var(--theme-color);
     --animation-fill-color: #FF0000;
     --translateX-image: 0;
+
+
+    --avatar-frame-size: 115px;
+    --min-indent: 5px; /* надо сделать чтото типо основного отступа в проекте */
 }

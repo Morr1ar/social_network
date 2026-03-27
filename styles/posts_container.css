@@ -40,35 +40,7 @@
     font-weight: bold;
 }
 
-.post-context__menu-btn {
-    cursor: pointer;
-    inline-size: 38px;
-    block-size: 38px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-}
 
-.post-context__menu {
-    background-color: blue;
-    position: absolute; /* надо сделать так чтобы было вверху справа поста н
-    о если пост слишком низко и меню не помещается 
-    то он максимум доходило до низа posts_container или типо того */
-    top: 3px;
-    right: 3px;
-    display: none;
-    z-index: 999;
-}
-
-.post-context__menu.active {
-    display: block;
-}
-
-.post-context__menu ul {
-    display: flex;
-    flex-direction: column;
-}
 
 /* ну а за следующие 3 селектора мне минимум 3 с плюсом */
 /*.post-context__menu-btn:active + .post-context__menu {

@@ -32,19 +32,37 @@
             </div>
             <div class="profileHeader__main">
               <div class="profileHeader__info">
-                <span class="profile-name"></span>
+                <div class="profile__info-name">
+                  <h1 class="profile-name"></h1>
+                  <span id="profile-user_name"></span>
+                </div>
                 <div class="profile__info">
                   <div>
-                    <span id="prifile-country" class="profile__info-item"></span>
-                    <span id="moreDetailesBtn" class="profile__info-item">подробнее</span>
+                    <div>
+                      <span id="profile-country" class="profile__info-item"></span>
+                      <span id="profile-birth" class="profile__info-item"></span>
+                    </div>
+                    <div>
+                      <span id="profile-friendsCnt" class="profile__info-item"></span>
+                      <span id="profile-subscriptionsCnt" class="profile__info-item"></span>
+                    </div>
                   </div>
-                  <span id="prifile-bio"></span>
+                  <p id="profile-bio"></p>
                 </div>
               </div>
               <div class="profileHeaderActions">
-                <a href="">
-                  <span>Редактировать</span>
-                </a>
+                <button class="context__menu-btn">
+                  <span class="menu_btn">
+                    ☰
+                  </span>
+                </button>
+                <div class="context__menu">
+                  <ul>
+                    <li class="keywords_item">
+                      <span class="keywords">Редактировать</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -90,12 +108,12 @@
                 <img class="author-avatar" src="" alt="Аватар автора поста">
                 <span class="author-name"></span>
             </a>
-            <button class="post-context__menu-btn">
+            <button class="context__menu-btn">
               <span class="menu_btn">
                 ☰
               </span>
             </button>
-            <div class="post-context__menu">
+            <div class="context__menu">
               <ul>
                 <li class="keywords_item">
                   <span class="keywords">Копировать ссылку</span>
