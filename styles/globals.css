@@ -69,15 +69,20 @@ ol {
   background-color: #D9D9D9;
 }
 
+
+
+
+
+
 /* Скрытие полосы прокрутки */
 .no_lags_no_scrollbar {
-    scrollbar-width: none;
+  scrollbar-width: none;
 
-    /* ЧТОБ ПРИ СКРОЛЛЕ СТРАНИЦА НЕ ЛАГАЛА
-    /* Для iOS чтобы скролл был нативным */
-    -webkit-overflow-scrolling: touch;
-    /* Включаем аппаратное ускорение */
-    transform: translateZ(0);
+  /* ЧТОБ ПРИ СКРОЛЛЕ СТРАНИЦА НЕ ЛАГАЛА
+  /* Для iOS чтобы скролл был нативным */
+  -webkit-overflow-scrolling: touch;
+  /* Включаем аппаратное ускорение */
+  transform: translateZ(0);
 }
 
 /* Скрытие полосы прокрутки (опционально) */
@@ -85,33 +90,56 @@ ol {
   display: none;
 }
 
+/* Аватар профиля */
+.profile__ava {
+  background: linear-gradient(135deg, #FF8AAB, #00B4D8, #FFC9D3, #FFDE6B);
+  width: var(--avatar-frame-size);
+  height: var(--avatar-frame-size);
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  mask-image: radial-gradient(circle at 50% 50%, black calc(var(--avatar-size) / 2 - (var(--avatar-size) / 100)), transparent calc(var(--avatar-size) / 2), transparent calc(var(--avatar-size) / 2 + (var(--avatar-size) / 100)), black calc(var(--avatar-size) / 2 + (var(--avatar-size) * 2 / 100)));
+}
+
+.profile-avatar {
+  background-color: blue;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
 /* КНОПКА МЕНЮ ЕСТЬ КАК НА ПОСТАХ ТАК И НА ШАПКЕ ПРОФИЛЯ */
 .context__menu-btn {
-    cursor: pointer;
-    inline-size: 38px;
-    block-size: 38px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
+  cursor: pointer;
+  inline-size: 38px;
+  block-size: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
 }
 
 .context__menu {
-    background-color: blue;
-    position: absolute; /* надо сделать так чтобы было вверху справа поста н
-    о если пост слишком низко и меню не помещается 
-    то он максимум доходило до низа posts_container или типо того */
-    top: 3px;
-    right: 3px;
-    display: none;
-    z-index: 999;
+  background-color: blue;
+  position: absolute; /* надо сделать так чтобы было вверху справа поста н
+  о если пост слишком низко и меню не помещается 
+  то он максимум доходило до низа posts_container или типо того */
+  top: var(--min-indent);
+  right: var(--min-indent);
+  display: none;
+  z-index: 100;
 }
 
 .context__menu.active {
-    display: block;
+  display: block;
 }
 
 .context__menu ul {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }

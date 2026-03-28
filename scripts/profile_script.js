@@ -1,7 +1,7 @@
 const profileData = 
 {
     name: 'Simon Petrikov',
-    avatar: 'https://example.com/avatar.jpg', // Тут надо чтоб для каждой страницы своя фотка была
+    avatar: '/images/SnowKingAva.jpg', // Тут надо чтоб для каждой страницы своя фотка была
     user_name: '@SnowKing3000',
     bio: 'Гантер! Верни мне корону!',
     friends: [],
@@ -23,11 +23,7 @@ function insertProfileHeader(profile) {
     profileHeaderIn.querySelector('.profile-avatar').src = profile['avatar'];
     profileHeaderIn.querySelector('.profile-avatar').loading = 'lazy';
     profileHeaderIn.querySelector('.profile-name').textContent = profile['name'];
-    document.getElementById('profile-user_name').textContent = profile['user_name'];
     document.getElementById('profile-country').textContent = profile['country'];
-    document.getElementById('profile-birth').textContent = profile['birth_date'];
-    document.getElementById('profile-friendsCnt').textContent = profile['friends'].length;
-    document.getElementById('profile-subscriptionsCnt').textContent = profile['subscriptions'].length;
     document.getElementById('profile-bio').textContent = profile['bio'];
 
     profileHeaderIn.querySelector('.context__menu-btn').addEventListener('click', function (evt) {

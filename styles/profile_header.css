@@ -1,85 +1,81 @@
 .profileHeader {
     display: flex;
     flex-direction: column;
+    margin: var(--min-indent);
+    background-color: var(--block-main-color);
+    border-radius: calc(var(--min-indent) * 2);
+    border: var(--block-main-border);
 }
 
 .profileHeader__in {
-    display: grid;
-    grid-template-columns: min-content 1fr;
-    grid-template-rows: 1fr;
-    padding: 5px;
-    
-    gap: calc(2 * var(--min-indent)); /*      */
-}
-
-.profileHeader__ava {
-    background-color: purple;
-    width: var(--avatar-frame-size);
-    height: var(--avatar-frame-size);
-    border-radius: 50%;
-
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    position: relative;
+    padding: var(--min-indent);
+    gap: var(--min-indent);
 }
 
-.profile-avatar {
-    background-color: blue;
-    width: calc(var(--avatar-frame-size) - 15px); /* потом скорее всего надо будет на переменную поменять */
-    height: calc(var(--avatar-frame-size) - 15px);
-    border-radius: 50%;
-    object-fit: cover; /* надо проверить что оно делает на настоящих фотках */
-}
+
 
 .profileHeader__main {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    /*padding-inline-start: 10px; /* потом скорее всего надо будет на переменную поменять */
-
-    position: relative;
-    background-color: white;
-    padding-inline: var(--min-indent);
+    
 }
-
+/*
 .profileHeader__main::before {
     content: "";
     position: absolute;
     width: calc((var(--avatar-frame-size) / 2) + (2 * var(--min-indent)));
     height: 100%;
     top: 0;
-    left: 0;
-    background-color: white;
-    transform: translateX(-100%);
-    mask-image: radial-gradient(circle at 0 calc(var(--avatar-frame-size) / 2), transparent calc(var(--avatar-frame-size) / 2 + var(--min-indent)), black calc(var(--avatar-frame-size) / 2 + var(--min-indent) + 1px));
+    left: calc(-1 * ((var(--avatar-frame-size) / 2) + (2 * var(--min-indent)))); /* с translateX были зазоры между элементами */
+    /*mask-image: radial-gradient(circle at 0 calc(var(--avatar-frame-size) / 2), transparent calc(var(--avatar-frame-size) / 2 + var(--min-indent)), black calc(var(--avatar-frame-size) / 2 + var(--min-indent) + 1px));
+
+    background-color: var(--block-main-color);
+    border: var(--block-main-border);
+    border-inline: none;
 }
+
+.profileHeader__main::after {
+    content: "";
+    position: absolute;
+    width: calc(var(--avatar-frame-size) / 2);
+    height: calc(100% - (var(--avatar-frame-size) + var(--min-indent))); /* зависит от mask-image у ::before */
+    /*bottom: 0;
+    left: calc(-1 * (var(--avatar-frame-size) + (2 * var(--min-indent)))); /* зависит от размеров и смещения ::before */
+    /*mask-image: linear-gradient(to bottom, transparent 0, black 1px); /* у ::before немного размыто и тут тоже добавил */
+    
+    /*background-color: var(--block-main-color);
+    border-radius: 10px 0 0 10px;
+    border: var(--block-main-border);
+    border-right: none;
+}*/
 
 .profileHeader__info {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    inline-size: 100%;
+    align-items: center;
+    padding: var(--min-indent);
 }
 
 .profile__info {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .profile__info div {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    gap: var(--min-indent);
 }
 
-.profile__info div div {
-    display: flex;
-    flex-direction: row;
-    gap: var(--min-indent);
+.profile__info-item {
+
 }
 
 .profileHeaderActions {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: var(--min-indent);
+    right: var(--min-indent);
 }

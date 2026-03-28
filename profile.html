@@ -23,46 +23,39 @@
     <main class="main">
       <div class="profileHeader_and_postsContainer no_lags_no_scrollbar">
         <header class="profileHeader">
-          <div class="OwnerPageCover">
+          <div class="OwnerPageCover"> <!-- возможно и скорее всего не пригодится так что надо убрать -->
 
           </div>
           <div class="profileHeader__in">
-            <div class="profileHeader__ava">
+            <div class="profile__ava">
               <img class="profile-avatar" src="" alt="Аватар владельца страницы">
             </div>
             <div class="profileHeader__main">
               <div class="profileHeader__info">
-                <div class="profile__info-name">
-                  <h1 class="profile-name"></h1>
-                  <span id="profile-user_name"></span>
-                </div>
+                <h1 class="profile-name"></h1>
                 <div class="profile__info">
                   <div>
-                    <div>
-                      <span id="profile-country" class="profile__info-item"></span>
-                      <span id="profile-birth" class="profile__info-item"></span>
-                    </div>
-                    <div>
-                      <span id="profile-friendsCnt" class="profile__info-item"></span>
-                      <span id="profile-subscriptionsCnt" class="profile__info-item"></span>
-                    </div>
+                    <span id="profile-country" class="profile__info-item"></span>
                   </div>
                   <p id="profile-bio"></p>
                 </div>
               </div>
-              <div class="profileHeaderActions">
-                <button class="context__menu-btn">
-                  <span class="menu_btn">
-                    ☰
-                  </span>
-                </button>
-                <div class="context__menu">
-                  <ul>
-                    <li class="keywords_item">
-                      <span class="keywords">Редактировать</span>
-                    </li>
-                  </ul>
-                </div>
+            </div>
+            <div class="profileHeaderActions">
+              <button class="context__menu-btn">
+                <span class="menu_btn">
+                  ☰
+                </span>
+              </button>
+              <div class="context__menu">
+                <ul>
+                  <li class="keywords_item">
+                    <span class="keywords">Подробнее</span>
+                  </li>
+                  <li class="keywords_item">
+                    <span class="keywords">Редактировать</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -105,8 +98,10 @@
         <article class="post">
           <div class="post-details">
             <a href="" class="author-profile__link">
-                <img class="author-avatar" src="" alt="Аватар автора поста">
-                <span class="author-name"></span>
+              <div class="profile__ava">
+                <img class="profile-avatar author-avatar" src="" alt="Аватар автора поста">
+              </div>
+              <span class="author-name"></span>
             </a>
             <button class="context__menu-btn">
               <span class="menu_btn">
@@ -176,4 +171,22 @@
     <script src="./scripts/profile_script.js"></script>
     <script src="./scripts/posts_script.js"></script>
   </body>
+
+
+
+
+
+  <div class="" style="display: none;"> <!-- Класс full_info или что то такое -->
+    <span id="profile-user_name"></span>
+    <span id="profile-birth" class="profile__info-item"></span>
+    <span id="profile-friendsCnt" class="profile__info-item"></span>
+    <span id="profile-subscriptionsCnt" class="profile__info-item"></span>
+  </div>
+
+
+
+
+
+
+
 </html>

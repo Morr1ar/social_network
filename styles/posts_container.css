@@ -26,14 +26,14 @@
     color: #000; /* Можно еще подумать над цветами */
     font-family: Arial, sans-serif; /* И над этим */
     margin-inline-end: 5px;
+    gap: 10px;
+
+    --avatar-size: 40px;
+    --avatar-frame-size: calc(var(--avatar-size) * 1.15);
 }
 
 .author-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-    object-fit: cover; /* чтобы изображение  не искажалось */
+    
 }
 
 .author-name {
