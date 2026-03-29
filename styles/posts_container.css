@@ -1,23 +1,26 @@
 .postsContainer {
-    
+    margin: var(--min-indent);
+    display: flex;
+    flex-direction: column;
+    gap: var(--min-indent);
 }
 
-
-
-
-
-
 .post {
-    background-color: aqua;
     inline-size: 100%;
+    background-color: var(--block-main-color);
+    padding: var(--min-indent);
+    border: var(--block-main-border);
+    border-radius: calc(var(--min-indent) * 2);
+    display: flex;
+    flex-direction: column;
+    gap: var(--min-indent);
 }
 
 .post-details {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    position: relative; /* для контекстного меню */
+    padding: var(--min-indent);
 }
 
 .author-profile__link {
@@ -27,13 +30,17 @@
     font-family: Arial, sans-serif; /* И над этим */
     margin-inline-end: 5px;
     gap: 10px;
-
-    --avatar-size: 40px;
-    --avatar-frame-size: calc(var(--avatar-size) * 1.15);
 }
 
-.author-avatar {
-    
+.ava-sm {
+    width: var(--avatar-frame-size-sm);
+    height: var(--avatar-frame-size-sm);
+    mask-image: radial-gradient(circle at 50% 50%, black calc(var(--avatar-size-sm) / 2 - (var(--avatar-size-sm) / 100)), transparent calc(var(--avatar-size-sm) / 2), transparent calc(var(--avatar-size-sm) / 2 + (var(--avatar-size-sm) / 100)), black calc(var(--avatar-size-sm) / 2 + (var(--avatar-size-sm) * 2 / 100)));
+}
+
+.ava-sm .profile-avatar {
+    width: var(--avatar-size-sm);
+    height: var(--avatar-size-sm);
 }
 
 .author-name {
@@ -167,7 +174,7 @@
 
 
 .text-container {
-    margin: 5px;
+    padding: var(--min-indent);
 }
 
 .text-content {
@@ -290,7 +297,7 @@
     }
 }
 
-@media (max-width: 376px) {
+@media (max-width: 480px) {
     :root {
         --size-posts-container: 100dvw;
     }

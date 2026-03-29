@@ -1,20 +1,27 @@
-.main__sidebar ul{
-    height: min-content;
+.main__sidebar {
     background-color: antiquewhite;
+    height: min-content;
+    margin: var(--min-indent);
+    border-radius: calc(var(--min-indent) * 2);
+}
+
+.main__sidebar ul{
     display: flex;
     flex-direction: column;
 }
 
 .keywords_item {
-    padding: 5px;
+    background-color: blue;
     cursor: pointer;
+    padding: var(--min-indent);
+    border-radius: calc(var(--min-indent) * 2);
 }
 
 .main__sidebar-item a {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 5px; /* как padding у этого элемента keywords_item */
+    gap: var(--min-indent);
 }
 
 .keywords__img {
@@ -26,7 +33,7 @@
     
 }
 
-@media (max-width: 376px) {
+@media (max-width: 480px) {
     .main__sidebar ul{
         flex-direction: row;
         justify-content: space-evenly;

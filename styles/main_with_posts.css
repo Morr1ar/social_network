@@ -3,10 +3,10 @@
     justify-content: center;
     grid-template-columns: 1fr min-content;
     grid-template-rows: 1fr;
-    background-color: orange;
+    background-color: indigo;
     inline-size: var(--main-size);
-    block-size: calc(100vh - var(--header-height));
     overflow: hidden; /* сколько мучений чтоб это заработало */
+    flex-grow: 1; /* main занимает все оставшееся место после шапки */
 }
 
 .profileHeader_and_postsContainer {
@@ -28,7 +28,7 @@
     
 }
 
-@media (max-width: 376px) {
+@media (max-width: 480px) {
     .main {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr min-content;

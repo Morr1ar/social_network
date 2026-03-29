@@ -2,25 +2,33 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100vh; /* занимает всю высоту экрана а не больше, 
+    нужно чтобы шапка была определенного размера, 
+    а main растянулся на оставшуюся длину экрана но не больше*/
 }
 
 .header {
-    background-color: red;
-    inline-size: var(--main-size);
-    max-block-size: var(--header-height);
+    background-color: blue;
+    inline-size: 100%;
     position: sticky;
     top: 0;
     left: 0;
     z-index: 999;
-    padding: 5px;
     display: flex;
-    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /* Шапка не будет сжиматься */
+}
+
+.header__in {
+    background-color: red;
+    inline-size: var(--main-size);
+    padding: var(--min-indent);
 }
 
 .logo__link {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: var(--min-indent);
 }
 
 .logo {
@@ -40,6 +48,6 @@
     
 }
 
-@media (max-width: 376px) {
+@media (max-width: 480px) {
     
 }

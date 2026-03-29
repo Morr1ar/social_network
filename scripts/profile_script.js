@@ -1,7 +1,7 @@
 const profileData = 
 {
     name: 'Simon Petrikov',
-    avatar: '/images/SnowKingAva.jpg', // Тут надо чтоб для каждой страницы своя фотка была
+    avatar: '/example_images/SnowKingAva.jpg', // Тут надо чтоб для каждой страницы своя фотка была
     user_name: '@SnowKing3000',
     bio: 'Гантер! Верни мне корону!',
     friends: [],
@@ -20,8 +20,8 @@ function insertProfileHeader(profile) {
     const profileHeader = document.querySelector('.profileHeader');
     const profileHeaderIn = profileHeader.querySelector('.profileHeader__in');
 
-    profileHeaderIn.querySelector('.profile-avatar').src = profile['avatar'];
-    profileHeaderIn.querySelector('.profile-avatar').loading = 'lazy';
+    profileHeaderIn.querySelector('.user-avatar').src = profile['avatar'];
+    profileHeaderIn.querySelector('.user-avatar').loading = 'lazy';
     profileHeaderIn.querySelector('.profile-name').textContent = profile['name'];
     document.getElementById('profile-country').textContent = profile['country'];
     document.getElementById('profile-bio').textContent = profile['bio'];

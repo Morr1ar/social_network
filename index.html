@@ -14,10 +14,12 @@
   </head>
   <body class="page">
     <header class="header">
-      <a class="logo__link" href="">
-        <img src="/images/StitchSVG.svg" alt="Логотип сайта" class="logo">
-        <span class="logo__name">Project1 version1 model-"NL-X"</span>
-      </a>
+        <div class="header__in">
+            <a class="logo__link" href="">
+                <img src="/images/StitchSVG.svg" alt="Логотип сайта" class="logo">
+                <span class="logo__name">Project1 version1 model-"NL-X"</span>
+            </a>
+        </div>
     </header>
     <main class="main">
       <div class="profileHeader_and_postsContainer no_lags_no_scrollbar">
@@ -59,28 +61,28 @@
         <article class="post">
           <div class="post-details">
             <a href="" class="author-profile__link">
-              <div class="profile__ava">
+              <div class="profile__ava ava-sm">
                 <img class="profile-avatar author-avatar" src="" alt="Аватар автора поста">
               </div>
               <span class="author-name"></span>
             </a>
-            <button class="context__menu-btn">
-              <span class="menu_btn">
-                ☰
-              </span>
-            </button>
-            <div class="context__menu">
-              <ul>
-                <li class="keywords_item">
-                  <span class="keywords">Копировать ссылку</span>
-                </li>
-                <li class="keywords_item">
-                  <span class="keywords">Не интересно</span>
-                </li>
-                <li class="keywords_item">
-                  <span class="keywords">Пожаловаться</span>
-                </li>
-              </ul>
+            <div class="contextMenuWrapper">
+                <button class="context__menu-btn" aria-label="Меню действий">
+                    <span class="menu_btn">
+                        ☰
+                    </span>
+                </button>
+                <ul class="context__menu">
+                    <li class="keywords_item">
+                        <span class="keywords">Копировать ссылку</span>
+                    </li>
+                    <li class="keywords_item">
+                        <span class="keywords">Не интересно</span>
+                    </li>
+                    <li class="keywords_item">
+                        <span class="keywords">Пожаловаться</span>
+                    </li>
+                </ul>
             </div>
           </div>
 

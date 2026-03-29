@@ -3,8 +3,8 @@
     flex-direction: column;
     margin: var(--min-indent);
     background-color: var(--block-main-color);
-    border-radius: calc(var(--min-indent) * 2);
     border: var(--block-main-border);
+    border-radius: calc(var(--min-indent) * 2);
 }
 
 .profileHeader__in {
@@ -16,11 +16,21 @@
     gap: var(--min-indent);
 }
 
+.ava-lg {
+    width: var(--avatar-frame-size-lg);
+    height: var(--avatar-frame-size-lg);
+    mask-image: radial-gradient(circle at 50% 50%, black calc(var(--avatar-size-lg) / 2 - (var(--avatar-size-lg) / 100)), transparent calc(var(--avatar-size-lg) / 2), transparent calc(var(--avatar-size-lg) / 2 + (var(--avatar-size-lg) / 100)), black calc(var(--avatar-size-lg) / 2 + (var(--avatar-size-lg) * 2 / 100)));
+}
 
+.ava-lg .profile-avatar {
+    width: var(--avatar-size-lg);
+    height: var(--avatar-size-lg);
+}
 
 .profileHeader__main {
     
 }
+
 /*
 .profileHeader__main::before {
     content: "";
@@ -74,7 +84,7 @@
 
 }
 
-.profileHeaderActions {
+.profileHeader__in .contextMenuWrapper {
     position: absolute;
     top: var(--min-indent);
     right: var(--min-indent);

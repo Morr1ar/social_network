@@ -93,27 +93,26 @@ ol {
 /* Аватар профиля */
 .profile__ava {
   background: linear-gradient(135deg, #FF8AAB, #00B4D8, #FFC9D3, #FFDE6B);
-  width: var(--avatar-frame-size);
-  height: var(--avatar-frame-size);
   border-radius: 50%;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  mask-image: radial-gradient(circle at 50% 50%, black calc(var(--avatar-size) / 2 - (var(--avatar-size) / 100)), transparent calc(var(--avatar-size) / 2), transparent calc(var(--avatar-size) / 2 + (var(--avatar-size) / 100)), black calc(var(--avatar-size) / 2 + (var(--avatar-size) * 2 / 100)));
-}
+  }
 
 .profile-avatar {
   background-color: blue;
-  width: var(--avatar-size);
-  height: var(--avatar-size);
   border-radius: 50%;
   object-fit: cover;
 }
 
 
 /* КНОПКА МЕНЮ ЕСТЬ КАК НА ПОСТАХ ТАК И НА ШАПКЕ ПРОФИЛЯ */
+.contextMenuWrapper {
+    position: relative;
+}
+
 .context__menu-btn {
   cursor: pointer;
   inline-size: 38px;
@@ -121,7 +120,9 @@ ol {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
+  /*border-radius: 50%;*/
+
+  background-color: #FFDE6B;
 }
 
 .context__menu {
@@ -129,17 +130,13 @@ ol {
   position: absolute; /* надо сделать так чтобы было вверху справа поста н
   о если пост слишком низко и меню не помещается 
   то он максимум доходило до низа posts_container или типо того */
-  top: var(--min-indent);
-  right: var(--min-indent);
-  display: none;
+  top: 0;
+  right: 0;
   z-index: 100;
+  flex-direction: column;
+  display: none;
 }
 
 .context__menu.active {
-  display: block;
-}
-
-.context__menu ul {
   display: flex;
-  flex-direction: column;
 }

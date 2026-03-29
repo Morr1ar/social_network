@@ -11,8 +11,10 @@
     --translateX-image: 0;
 
 
-    --avatar-size: 100px;
-    --avatar-frame-size: calc(var(--avatar-size) * 1.15);
+    --avatar-size-lg: 100px;
+    --avatar-frame-size-lg: calc(var(--avatar-size-lg) * 1.15);
+    --avatar-size-sm: 40px;
+    --avatar-frame-size-sm: calc(var(--avatar-size-sm) * 1.15);
     --min-indent: 5px; /* надо сделать чтото типо основного отступа в проекте */
     --block-main-color: #fff5ee;
     --block-main-border: 3px solid #ffebcd;
