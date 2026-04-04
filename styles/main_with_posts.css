@@ -3,7 +3,7 @@
     justify-content: center;
     grid-template-columns: 1fr min-content;
     grid-template-rows: 1fr;
-    background-color: indigo;
+    /*background-color: indigo;*/
     inline-size: var(--main-size);
     overflow: hidden; /* сколько мучений чтоб это заработало */
     flex-grow: 1; /* main занимает все оставшееся место после шапки */

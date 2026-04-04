@@ -1,0 +1,35 @@
+.stitch-svg {
+    fill: #2A52BE;
+    stroke: #00008B;
+}
+
+.yoda-svg {
+    fill: #6C584C;
+    stroke: #ADC178;
+}
+
+.luffy-svg {
+    fill: white;
+    stroke: #ffff00;
+}
+
+.keywords_item:hover .luffy-svg {
+    stroke: #800080;
+}
+
+.tomAndJerry-svg path:nth-child(1){
+    fill: #C0C0C0;
+    stroke: #808990;
+}
+
+.tomAndJerry-svg path:nth-child(2){
+    fill: #B37B4D;
+    stroke: #704221;
+}
+
+.dragon-svg {
+    fill: #25254A;
+    stroke: #8A2BE2;
+    stroke-width: 2px;
+}
+

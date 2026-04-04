@@ -15,7 +15,7 @@ function renderProfile(profile) {
     insertProfileHeader(profile);
 }
 
-// Функция создания шапки профиля
+// Функция заполнения шапки профиля
 function insertProfileHeader(profile) {
     const profileHeader = document.querySelector('.profileHeader');
     const profileHeaderIn = profileHeader.querySelector('.profileHeader__in');
@@ -23,24 +23,74 @@ function insertProfileHeader(profile) {
     profileHeaderIn.querySelector('.user-avatar').src = profile['avatar'];
     profileHeaderIn.querySelector('.user-avatar').loading = 'lazy';
     profileHeaderIn.querySelector('.profile-name').textContent = profile['name'];
-    document.getElementById('profile-country').textContent = profile['country'];
-    document.getElementById('profile-bio').textContent = profile['bio'];
+    profileHeaderIn.querySelector('.profile-country').textContent = profile['country'];
+    profileHeaderIn.querySelector('.profile-bio').textContent = profile['bio'];
 
-    profileHeaderIn.querySelector('.context__menu-btn').addEventListener('click', function (evt) {
+    /* Кнопка контекстного меню */
+    const contextMenu_btn = profileHeaderIn.querySelector('.context__menu-btn');
+    const contextMenu = profileHeaderIn.querySelector('.context__menu');
+    contextMenu_btn.addEventListener('click', function (evt) {
         // Останавливаем событие - оно не пойдет дальше к родителю
         evt.stopPropagation(); // ну... возможно это костыль а может и нет
 
-        profileHeaderIn.querySelector('.context__menu').classList.add('active');
+        contextMenu.classList.add('active');
 
-        profileHeaderIn.querySelector('.context__menu').addEventListener('mouseleave', function (evt) {
-            profileHeaderIn.querySelector('.context__menu').classList.remove('active');
+        contextMenu.addEventListener('mouseleave', function (evt) {
+            contextMenu.classList.remove('active');
         });
 
+        /* Закрытие контекстного меню при касании экрана вне меню */
         document.addEventListener('touchstart', function (evt) {
             if (!evt.target.closest('.context__menu')) {
-                profileHeaderIn.querySelector('.context__menu').classList.remove('active');
+                contextMenu.classList.remove('active');
             }
         });
+    });
+
+    /* Прослушки кнопок в контекстном меню */
+    document.getElementById('moreBtn').addEventListener('click', function (evt) {
+        document.getElementById('full__profileInfo').classList.add('active');
+        insertProfileFullInfo(profile);
+    });
+};
+
+// Функция заполнения подробной информации профиля профиля
+function insertProfileFullInfo(profile) {
+    const profileFullInfo = document.getElementById('full__profileInfo');
+    const profileHeader = profileFullInfo.querySelector('.profileHeader');
+    const profileHeaderIn = profileHeader.querySelector('.profileHeader__in');
+
+    profileHeaderIn.querySelector('.user-avatar').src = profile['avatar'];
+    profileHeaderIn.querySelector('.user-avatar').loading = 'lazy';
+    profileHeaderIn.querySelector('.profile-name').textContent = profile['name'];
+    profileHeaderIn.querySelector('.profile-user_name').textContent = profile['user_name'];
+    profileHeaderIn.querySelector('.profile-bio').textContent = profile['bio'];
+    profileHeaderIn.querySelector('.profile-country').textContent = profile['country'];
+    profileHeaderIn.querySelector('.profile-birth').textContent = profile['birth_date'];
+    profileHeaderIn.querySelector('.profile-friendsCnt').textContent = profile['friends'].length;
+    profileHeaderIn.querySelector('.profile-subscriptionsCnt').textContent = profile['subscriptions'].length;
+
+    /* Кнопка контекстного меню */
+    const contextMenu_btn = profileHeaderIn.querySelector('.context__menu-btn');
+    const contextMenu = profileHeaderIn.querySelector('.context__menu');
+    contextMenu_btn.addEventListener('click', function (evt) {
+        // Останавливаем событие - оно не пойдет дальше к родителю
+        evt.stopPropagation(); // ну... возможно это костыль а может и нет
+
+        contextMenu.classList.add('active');
+
+        contextMenu.addEventListener('mouseleave', function (evt) {
+            contextMenu.classList.remove('active');
+        });
+
+        /* Закрытие контекстного меню при касании экрана вне меню */
+        document.addEventListener('touchstart', function (evt) {
+            if (!evt.target.closest('.context__menu')) {
+                contextMenu.classList.remove('active');
+            }
+        });
+
+
     });
 };
 

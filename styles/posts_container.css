@@ -95,6 +95,7 @@
 }
 
 .post__images .galleryTrack {
+    background-color: var(--loading-color); /* виден пока картинки грузятся */
     display: flex;
     
 

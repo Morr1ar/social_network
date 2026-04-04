@@ -1,8 +1,8 @@
 .main__sidebar {
-    background-color: antiquewhite;
     height: min-content;
     margin: var(--min-indent);
     border-radius: calc(var(--min-indent) * 2);
+    background-color: var(--system-main-color);
 }
 
 .main__sidebar ul{
@@ -11,10 +11,13 @@
 }
 
 .keywords_item {
-    background-color: blue;
     cursor: pointer;
     padding: var(--min-indent);
     border-radius: calc(var(--min-indent) * 2);
+}
+
+.keywords_item:hover {
+    background-color: var(--hover-color);
 }
 
 .main__sidebar-item a {

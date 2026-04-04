@@ -46,6 +46,22 @@ ol {
   list-style: none;
 }
 
+img {
+    font-size: 0;
+    color: transparent; /* Скрывает цвет текста alt */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  color: var(--text-color);
+}
+
 .visually-hidden {
   position: absolute;
   inline-size: 1px;
@@ -93,6 +109,7 @@ ol {
 /* Аватар профиля */
 .profile__ava {
   background: linear-gradient(135deg, #FF8AAB, #00B4D8, #FFC9D3, #FFDE6B);
+  background: linear-gradient(135deg, #FF8AAB 20%, #00B4D8 40%, #00B4D8 40%, #FFC9D3 65%, #FFC9D3 65%, #FFDE6B 90%);
   border-radius: 50%;
 
   display: flex;
@@ -102,7 +119,7 @@ ol {
   }
 
 .profile-avatar {
-  background-color: blue;
+  background-color: var(--loading-color); /* виден пока картинка грузится */
   border-radius: 50%;
   object-fit: cover;
 }
@@ -120,13 +137,16 @@ ol {
   display: flex;
   justify-content: center;
   align-items: center;
-  /*border-radius: 50%;*/
+  border-radius: 50%;
 
-  background-color: #FFDE6B;
+  
+}
+
+.context__menu-btn:hover {
+    background-color: var(--system-main-color);
 }
 
 .context__menu {
-  background-color: blue;
   position: absolute; /* надо сделать так чтобы было вверху справа поста н
   о если пост слишком низко и меню не помещается 
   то он максимум доходило до низа posts_container или типо того */
@@ -135,6 +155,8 @@ ol {
   z-index: 100;
   flex-direction: column;
   display: none;
+  border-radius: calc(var(--min-indent) * 2);
+  background-color: var(--system-main-color);
 }
 
 .context__menu.active {

@@ -16,6 +16,44 @@
     --avatar-size-sm: 40px;
     --avatar-frame-size-sm: calc(var(--avatar-size-sm) * 1.15);
     --min-indent: 5px; /* надо сделать чтото типо основного отступа в проекте */
+/*
     --block-main-color: #fff5ee;
     --block-main-border: 3px solid #ffebcd;
+    --system-main-color: #faebd7;
+    --loading-color: #faebd7;
+    --text-color: black;
+    --page-color: white;*/
+/*
+    --block-main-color: #FFAC24;
+    --block-main-border: 4px solid #EC9200;
+    --system-main-color: #FFAC24;
+    --loading-color: #faebd7;
+    --text-color: #523319;
+    --page-color: #FFE3B4;*/
+/*
+    --block-main-color: #fde8bd;
+    --block-main-border: none;
+    --system-main-color: rgb(255, 232, 118);
+    --loading-color: #fee5ff;
+    --text-color: black;
+    --page-color: #fcc24e;*/
+
+    /* #FF8AAB, #00B4D8, #FFC9D3, #FFDE6B */
+    --block-main-color: #fff4ce;
+    --block-main-border: 3px solid #FF8AAB;
+    --system-main-color: #ee9eb5;
+    --loading-color: #ffd7e2;
+    --text-color: black;
+    --page-color: #69e0f8;
+    --opacity-page-color: rgb(105, 224, 248, 0.7);
+    --hover-color: #FFDE6B;
+
+    /*--block-main-color: linear-gradient(135deg, #FF8AAB 20%, #00B4D8 40%, #00B4D8 40%, #FFC9D3 65%, #FFC9D3 65%, #FFDE6B 90%);
+    --block-main-border: 3px solid #FF8AAB;
+    --system-main-color: rgb(25, 26, 34);
+    --loading-color: #ffd7e2;
+    --text-color: #000000;
+    --page-color: #FFFFFF;
+    --opacity-page-color: rgb(105, 224, 248, 0.7);
+    --hover-color: #FFDE6B;*/
 }

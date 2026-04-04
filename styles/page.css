@@ -1,4 +1,5 @@
 .page {
+    background-color: var(--page-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,7 +9,7 @@
 }
 
 .header {
-    background-color: blue;
+    background-color: var(--system-main-color);
     inline-size: 100%;
     position: sticky;
     top: 0;
@@ -20,7 +21,7 @@
 }
 
 .header__in {
-    background-color: red;
+    /*background-color: red;*/
     inline-size: var(--main-size);
     padding: var(--min-indent);
 }
