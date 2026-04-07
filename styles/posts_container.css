@@ -1,5 +1,4 @@
 .postsContainer {
-    margin: var(--min-indent);
     display: flex;
     flex-direction: column;
     gap: var(--min-indent);
@@ -197,7 +196,7 @@
     max-height: none;
 }
 
-.text-container .showMoreBtn {
+.text-container .showMoreTextBtn {
     cursor: pointer;
     color: rebeccapurple;
 }
@@ -231,7 +230,7 @@
     cursor: pointer; /* меняет мышку на палец */
 }
 
-.post__comments-btn {
+.post__comments-button {
     background-color: red;
 }
 
