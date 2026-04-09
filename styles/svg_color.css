@@ -2,7 +2,7 @@
     fill: #2A52BE;
     stroke: #00008B;
 }
-
+/*
 .yoda-svg {
     fill: #6C584C;
     stroke: #ADC178;
@@ -13,8 +13,14 @@
     stroke: #ffff00;
 }
 
-.keywords_item:hover .luffy-svg {
+.luffy-svg:hover {
     stroke: #800080;
+}
+*/
+
+.candlestick-svg {
+    fill: #FFFFF0;
+    stroke: #FFD700;
 }
 
 .tomAndJerry-svg path:nth-child(1){

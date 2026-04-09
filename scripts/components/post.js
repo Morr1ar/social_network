@@ -1,4 +1,4 @@
-export const likePost = (likeButton, likesCount) => {
+export const likePost = (likeButton, likesCount, post) => {
     const likeIcon = likeButton.querySelector('.like-icon');
 
     likeIcon.classList.toggle('is-liked');
@@ -90,7 +90,7 @@ export const createPostElement = (
 
     likesCount.textContent = post['likes'];
     if (onLikeIcon) {
-        likeButton.addEventListener("click", () => onLikeIcon(likeButton, likesCount));
+        likeButton.addEventListener("click", () => onLikeIcon(likeButton, likesCount, post));
     }
 
     if (onOpenMenu) {
