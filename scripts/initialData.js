@@ -21,7 +21,7 @@ export const initialPosts = [
         createdAt: '2024-01-15T18:30:00Z',
         author: {
             name: 'Simon Petrikov',
-            avatar: 'https://example.com/avatar.jpg'
+            avatar: '/example_images/SnowKingAva.jpg'
         }
     },
     {

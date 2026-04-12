@@ -60,6 +60,7 @@ h6,
 p,
 span {
   color: var(--text-color);
+  overflow-wrap: break-word;
 }
 
 .visually-hidden {
@@ -119,7 +120,7 @@ span {
   }
 
 .profile-avatar {
-  background-color: var(--loading-color); /* виден пока картинка грузится */
+  background: var(--loading-color) url(/images/default-avatar.png) no-repeat center / cover; /* виден пока картинка грузится */
   border-radius: 50%;
   object-fit: cover;
 }

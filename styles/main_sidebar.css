@@ -1,6 +1,5 @@
 .main__sidebar {
     height: min-content;
-    margin: var(--min-indent);
     border-radius: calc(var(--min-indent) * 2);
     background-color: var(--system-main-color);
 }

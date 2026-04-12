@@ -1,7 +1,5 @@
 :root {
-    --main-size: clamp(250px, 100dvw, 700px); /* с нижней границей возможно не совсем поумному но что умеем то могём */
-    --header-height: 52.4px; /* блоку мэйн нужна точная высота а значит она нужна и хэдеру */
-    --logo-size: 60px;
+    
     --sidebar-width: 164px; /* может надо поменять на чтото заумное */
     --sidebar-height: 48px;
     --size-posts-container: calc((500 / 1440) * 100dvw); /* взято из проекта "Закрывающий тег" */
@@ -11,11 +9,14 @@
     --translateX-image: 0;
 
 
+    --main-size: clamp(250px, 100dvw, 700px); /* с нижней границей возможно не совсем поумному но что умеем то могём */
+    --min-indent: 5px; /* основной отступ в проекте */
+    --logo-size: 60px;
+    /*--header-height: calc(var(--logo-size) + (2 * var(--min-indent)));*/
     --avatar-size-lg: 100px;
     --avatar-frame-size-lg: calc(var(--avatar-size-lg) * 1.15);
     --avatar-size-sm: 40px;
     --avatar-frame-size-sm: calc(var(--avatar-size-sm) * 1.15);
-    --min-indent: 5px; /* надо сделать чтото типо основного отступа в проекте */
 /*
     --block-main-color: #fff5ee;
     --block-main-border: 3px solid #ffebcd;

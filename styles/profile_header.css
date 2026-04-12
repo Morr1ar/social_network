@@ -26,26 +26,23 @@
     height: var(--avatar-size-lg);
 }
 
-.profileHeader__main {
-    
-}
-
 .profileHeader__info {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: var(--min-indent);
+    max-width: 100%;
 }
 
 .profile__info {
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 100%;
 }
 
-/* если такого класса нет в html то надо удалить */
-.profile__info-item {
-
+.profile-bio {
+    max-inline-size: 100%;
 }
 
 .profileHeader__in .contextMenuWrapper {

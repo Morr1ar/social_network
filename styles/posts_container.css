@@ -5,7 +5,6 @@
 }
 
 .post {
-    inline-size: 100%;
     background-color: var(--block-main-color);
     padding: var(--min-indent);
     border: var(--block-main-border);

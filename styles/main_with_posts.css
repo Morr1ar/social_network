@@ -1,24 +1,34 @@
 .main {
     display: grid;
     justify-content: center;
-    grid-template-columns: 1fr min-content;
+    inline-size: 100%;
+    overflow: hidden;
+    flex-grow: 1; /* main занимает все оставшееся место после шапки */
+    overflow-y: auto;
+}
+
+.mainContent {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) min-content; /* minmax(0, 1fr) не дает элементу изза длинного беспробельного текста или изза большого контента выйти за рамки колонки */
     grid-template-rows: 1fr;
     /*background-color: indigo;*/
     inline-size: var(--main-size);
-    overflow: hidden; /* сколько мучений чтоб это заработало */
-    flex-grow: 1; /* main занимает все оставшееся место после шапки */
+    align-items: start; /* благодаря этому у main__sidebar-container работает position: sticky; */
 }
 
 .profileHeader_and_postsContainer {
-    inline-size: 100%;
-    overflow-y: auto;
     padding: var(--min-indent);
     display: flex;
     flex-direction: column;
     gap: var(--min-indent);
-    }
+}
 
-
+.main__sidebar-container {
+    padding: var(--min-indent);
+    position: sticky;
+    top: 0;
+    left: 0;
+}
 
 
 
@@ -34,7 +44,21 @@
 
 @media (max-width: 480px) {
     .main {
+        overflow: hidden;
+    }
+
+    .mainContent {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr min-content;
+        overflow: hidden;
+        align-items: initial;
+    }
+
+    .profileHeader_and_postsContainer {
+        overflow-y: auto;
+    }
+
+    .main__sidebar-container {
+        position: initial; /* по идеи если не менять position то ничего не меняется но на всякий случай я поменял со static на initial */
     }
 }
