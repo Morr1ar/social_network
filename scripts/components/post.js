@@ -1,18 +1,17 @@
-export const likePost = (likeButton, likesCount, post) => {
-    const likeIcon = likeButton.querySelector('.like-icon');
+export const likePost = (likeButton) => {
+    //const likeIcon = likeButton.querySelector('.like-icon');
 
-    likeIcon.classList.toggle('is-liked');
-
-    if (likeIcon.classList.contains('is-liked')) {
-        post['likes']++
-    } else {
-        post['likes']--
-    }
-
-    likesCount.textContent = post['likes'];
+    //likeIcon.classList.toggle('is-liked');
+    likeButton.classList.toggle('post__like-button_is-active')
 };
 
+export const isPostLiked = (likeButton) => {
+  return likeButton.classList.contains("post__like-button_is-active");
+};
 
+export const changeLikesCount = (likesCountElement, likesCount) => {
+    likesCountElement.textContent = likesCount;
+};
 
 export const showMoreText = (showMoreBtn, textElement) => {
     
@@ -20,10 +19,10 @@ export const showMoreText = (showMoreBtn, textElement) => {
 
     showMoreBtn.textContent = textElement.classList.contains('text__overflow') ? 'подробнее' : 'скрыть';
 };
-/*
-export const deleteCard = (cardElement) => {
-    cardElement.remove();
-};*/
+
+export const deletePost = (postElement) => {
+    postElement.remove();
+};
 
 export const scrollTrack = (track, direction) => {
     const itemWidth = track.querySelector('li').offsetWidth;
@@ -43,28 +42,32 @@ const getPostTemplate = () => {
 
 export const createPostElement = (
     post,
-    { onPreviewPicture, onLikeIcon, onOpenMenu, onShowMoreText, onScrollGallery }
+    { onPreviewPicture, onLikeIcon, setLikesCount, onOpenMenu, onShowMoreText, onScrollGallery, onDeletePost },
+    userId,
+    author_userName
 ) => {
     const postElement = getPostTemplate();
     const profile = postElement.querySelector('.author-profile__link');
     const gallerytrack = postElement.querySelector('.galleryTrack');
-    const circleTrack = postElement.querySelector('.gallery-circleTrack');
+    //const circleTrack = postElement.querySelector('.gallery-circleTrack');
     const textElement = postElement.querySelector('.text-content');
 
     const showMoreBtn = postElement.querySelector('.showMoreTextBtn');
     const likeButton = postElement.querySelector(".post__like-button");
-    const likesCount = postElement.querySelector(".likesCount");
-    const contextMenuButton = postElement.querySelector(".context__menu-btn");
-    const contextMenu = postElement.querySelector('.context__menu');
+    const likesCountElement = postElement.querySelector(".likesCount");
     const leftBtn = postElement.querySelector('.scroll-btn.left');
     const rightBtn = postElement.querySelector('.scroll-btn.right');
-    /*const deleteButton = postElement.querySelector(".card__control-button_type_delete");*/
+    
+    const contextMenuButton = postElement.querySelector(".context__menu-btn");
+    const contextMenu = postElement.querySelector('.context__menu');
+    const deleteButton = contextMenu.querySelector(".deletePostBtn");
     //const cardImage = postElement.querySelector(".card__image");
 
     profile.querySelector('.author-avatar').src = post['author']['avatar'];
     profile.querySelector('.author-avatar').loading = 'lazy';
     profile.querySelector('.author-avatar').alt = post['author']['name'];
     profile.querySelector('.author-name').textContent = post['author']['name'];
+    profile.href = `profile.html?user_name=${author_userName}`;
 
     post.images.forEach((imageUrl, index) => {
         const li = document.createElement('li');
@@ -88,9 +91,14 @@ export const createPostElement = (
         }
     }, 0);
 
-    likesCount.textContent = post['likes'];
+    const isLiked = post.likes.some((likedUserId) => likedUserId === userId);
+    if (isLiked) {
+        likeButton.classList.add("post__like-button_is-active");
+    }
+    setLikesCount(likesCountElement, post.likes.length);
+
     if (onLikeIcon) {
-        likeButton.addEventListener("click", () => onLikeIcon(likeButton, likesCount, post));
+        likeButton.addEventListener("click", () => onLikeIcon(likeButton, post, likesCountElement));
     }
 
     if (onOpenMenu) {
@@ -100,11 +108,13 @@ export const createPostElement = (
     if (onShowMoreText) {
         showMoreBtn.addEventListener("click", () => onShowMoreText(showMoreBtn, textElement));
     }
-/*
-    if (onDeleteCard) {
-        deleteButton.addEventListener("click", () => onDeleteCard(postElement));
+
+    /* Прослушки кнопок в контекстном меню */
+    if (onDeletePost) {
+        deleteButton.addEventListener('click', () => onDeletePost(postElement, post.id));
     }
-*/
+
+
     if (onPreviewPicture) {
         gallerytrack.addEventListener("click", (evt) => {
             if (evt.target.tagName === 'IMG') {
@@ -116,6 +126,10 @@ export const createPostElement = (
     if (onScrollGallery) {
         leftBtn.addEventListener('click', () => onScrollGallery(gallerytrack, -1));
         rightBtn.addEventListener('click', () => onScrollGallery(gallerytrack, 1));
+    }
+
+    if (userId !== post.userId) {
+        deleteButton.remove();
     }
 
     return postElement;

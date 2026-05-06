@@ -37,7 +37,7 @@
                 <nav class="main__sidebar">
                     <ul>
                         <li class="main__sidebar-item keywords_item">
-                            <a href="profile.html">
+                            <a href="profile.html" id="currentUser__profile-Button">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="keywords__img stitch-svg"
                                     viewBox="0 200 1200 1200">
                                     <path
@@ -101,6 +101,16 @@
         </div>
     </div>
 
+    <div class="popup popup_type_remove-post">
+        <div class="popup__content">
+            <button type="button" class="popup__close"></button>
+            <h3 class="popup__title">Удалить пост?</h3>
+            <form class="popup__form" name="remove-post" novalidate>
+                <button type="submit" class="button popup__button">Да</button>
+            </form>
+        </div>
+    </div>
+
     <script src="./scripts/index.js" defer type="module"></script>
 
     <template id="post-template">
@@ -118,8 +128,8 @@
                             <span class="menu_btn"> ☰ </span>
                         </button>
                         <ul class="context__menu">
-                            <li class="keywords_item">
-                                <span class="keywords">Копировать ссылку</span>
+                            <li class="deletePostBtn keywords_item">
+                                <span class="keywords">Удалить</span>
                             </li>
                             <li class="keywords_item">
                                 <span class="keywords">Не интересно</span>

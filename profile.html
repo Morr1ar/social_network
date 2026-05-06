@@ -50,13 +50,14 @@
                                 <li class="moreInfoBtn keywords_item">
                                     <span class="keywords">Подробнее</span>
                                 </li>
-                                <li id="" class="keywords_item">
+                                <li class="editInfoBtn keywords_item">
                                     <span class="keywords">Редактировать</span>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </header>
+                <button class="post__add-button" type="button"></button>
                 <ul class="postsContainer">
                     <!-- хотя вроде можно вместо section какойто div с role="feed"-->
                 </ul>
@@ -65,7 +66,7 @@
                 <nav class="main__sidebar">
                     <ul>
                         <li class="main__sidebar-item keywords_item">
-                            <a href="profile.html">
+                            <a href="profile.html" id="currentUser__profile-Button">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="keywords__img stitch-svg"
                                     viewBox="0 200 1200 1200">
                                     <path
@@ -152,7 +153,107 @@
                 </div>
                 <button type="button" class="popup__close"></button>
             </div>
-            <div class="profileNoHeader__in-decorateClass"></div>
+        </div>
+    </div>
+
+    <div class="popup popup_type_edit">
+        <div class="popup__content">
+            <button type="button" class="popup__close"></button>
+            <h3 class="popup__title">Редактировать профиль</h3>
+            <form class="popup__form" name="edit-profile" novalidate>
+                <label class="popup__label">
+                    <input type="url" name="user-avatar" id="user-avatar"
+                        class="popup__input popup__input_type_avatar" placeholder="Ссылка на изображение" />
+                    <span class="popup__error" id="user-avatar-error"></span>
+                </label>
+                <label class="popup__label">
+                    <input type="text" name="user-name" id="user-name" class="popup__input popup__input_type_name"
+                        placeholder="Имя" pattern="^[a-zA-Zа-яА-ЯёЁ\s\-]{2,40}$"
+                        data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
+                        required />
+                    <span class="popup__error" id="user-name-error"></span>
+                </label>
+                <label class="popup__label">
+                    <input type="text" name="user-userName" id="user-userName" class="popup__input popup__input_type_userName"
+                        placeholder="Никнэйм" pattern="^[a-zA-Z0-9]{2,15}$"
+                        data-error-message="Разрешены только цифры и латинские буквы"
+                        required />
+                    <span class="popup__error" id="user-userName-error"></span>
+                </label>
+                <label class="popup__label">
+                    <input type="text" name="user-bio" id="user-bio"
+                        class="popup__input popup__input_type_bio" placeholder="Занятие"
+                        pattern="^.{2,200}$" />
+                    <span class="popup__error" id="user-bio-error"></span>
+                </label>
+                <label class="popup__label">
+                    <input type="text" name="user-country" id="user-country" class="popup__input popup__input_type_country"
+                        placeholder="Страна" pattern="^[a-zA-Zа-яА-ЯёЁ\s\-]{2,15}$"
+                        data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
+                        />
+                    <span class="popup__error" id="user-country-error"></span>
+                </label>
+                <label class="popup__label">
+                    <input 
+                        type="date" 
+                        name="user-birthday" 
+                        id="user-birthday"
+                        class="popup__input popup__input_type_birthday"
+                    />
+                    <span class="popup__error" id="user-birthday-error"></span>
+                </label>
+                <button type="submit" class="button popup__button popup__button_submit popup__button_disabled" disabled>
+                    Сохранить
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="popup popup_type_new-post">
+        <div class="popup__content">
+            <button type="button" class="popup__close"></button>
+            <h3 class="popup__title">Новый пост</h3>
+            <form class="popup__form" name="new-place" novalidate>
+                <label class="popup__label">
+                    <input type="text" name="post-text" id="post-text"
+                        class="popup__input popup__input_type_post-text" placeholder="Описание" required
+                        pattern="^[a-zA-Zа-яА-ЯёЁ\s\-]{2,30}$"
+                        data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы" />
+                    <span class="popup__error" id="post-text-error"></span>
+                </label>
+                <!--
+                <label class="popup__label">
+                    <input type="url" name="post-link" id="post-link" class="popup__input popup__input_type_url"
+                        placeholder="Ссылка на картинку" required />
+                    <span class="popup__error" id="post-link-error"></span>
+                </label>
+                -->
+                <div id="images-container">
+                    <label class="popup__label">
+                        <input type="url" name="post-link"
+                            class="popup__input popup__input_type_url"
+                            placeholder="Ссылка на картинку" required />
+                        <span class="popup__error"></span>
+                    </label>
+                </div>
+
+                <button type="button" id="add-image-btn" class="button popup__button">
+                    Добавить ещё
+                </button>
+                <button type="submit" class="button popup__button popup__button_submit popup__button_disabled" disabled>
+                    Создать
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="popup popup_type_remove-post">
+        <div class="popup__content">
+            <button type="button" class="popup__close"></button>
+            <h3 class="popup__title">Удалить пост?</h3>
+            <form class="popup__form" name="remove-post" novalidate>
+                <button type="submit" class="button popup__button popup__button_submit">Да</button>
+            </form>
         </div>
     </div>
 
@@ -173,8 +274,8 @@
                             <span class="menu_btn"> ☰ </span>
                         </button>
                         <ul class="context__menu">
-                            <li class="keywords_item">
-                                <span class="keywords">Копировать ссылку</span>
+                            <li class="deletePostBtn keywords_item">
+                                <span class="keywords">Удалить</span>
                             </li>
                             <li class="keywords_item">
                                 <span class="keywords">Не интересно</span>

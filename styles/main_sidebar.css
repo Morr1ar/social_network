@@ -17,6 +17,7 @@
 
 .keywords_item:hover {
     background-color: var(--hover-color);
+    outline: var(--system-main-border);
 }
 
 .main__sidebar-item a {

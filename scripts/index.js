@@ -6,153 +6,174 @@
   Из index.js не допускается что то экспортировать
 */
 
-import { initialPosts } from "./initialData.js";
+import { currentUserId } from "./initialData.js";
 import { openContextMenu } from "./special.js";
-import { createPostElement, likePost, showMoreText, scrollTrack } from "./components/post.js";
+import { createPostElement, likePost, showMoreText, scrollTrack, changeLikesCount, isPostLiked } from "./components/post.js";
 import { openModalWindow, setCloseModalWindowEventListeners } from "./components/modal.js";
+import {
+    getUsers, getUser, getUserByUsername,
+    updateUser, updateAvatar, getPosts, createPost,
+    deletePostOnServer, likePostOnServer, getUserPosts, checkUsername
+} from './api.js';
 
 // DOM узлы
-/*
-const placesWrap = document.querySelector(".places__list");
-const profileFormModalWindow = document.querySelector(".popup_type_edit");
-const profileForm = profileFormModalWindow.querySelector(".popup__form");
-const profileTitleInput = profileForm.querySelector(".popup__input_type_name");
-const profileDescriptionInput = profileForm.querySelector(".popup__input_type_description");
-
-const cardFormModalWindow = document.querySelector(".popup_type_new-card");
-const cardForm = cardFormModalWindow.querySelector(".popup__form");
-const cardNameInput = cardForm.querySelector(".popup__input_type_card-name");
-const cardLinkInput = cardForm.querySelector(".popup__input_type_url");
-
-const imageModalWindow = document.querySelector(".popup_type_image");
-const imageElement = imageModalWindow.querySelector(".popup__image");
-const imageCaption = imageModalWindow.querySelector(".popup__caption");
-
-const openProfileFormButton = document.querySelector(".profile__edit-button");
-const openCardFormButton = document.querySelector(".profile__add-button");
-
-const profileTitle = document.querySelector(".profile__title");
-const profileDescription = document.querySelector(".profile__description");
-const profileAvatar = document.querySelector(".profile__image");
-
-const avatarFormModalWindow = document.querySelector(".popup_type_edit-avatar");
-const avatarForm = avatarFormModalWindow.querySelector(".popup__form");
-const avatarInput = avatarForm.querySelector(".popup__input");*/
+const mainSideBarProfileBtn = document.getElementById('currentUser__profile-Button');
 // fffffffffffffffffffffffffffffffffffffffffffffffffffff
 const postsContainer = document.querySelector('.postsContainer');
 
 const imageModalWindow = document.querySelector(".popup_type_image");
 const imageElement = imageModalWindow.querySelector(".popup__image");
 
+const removePostModalWindow = document.querySelector(".popup_type_remove-post");
+const removePostForm = removePostModalWindow.querySelector(".popup__form");
 
-const handlePreviewPicture = ({ name, link }) => {
-  imageElement.src = link;
-  imageElement.alt = name;
-  openModalWindow(imageModalWindow);
-};
-/*
-const handlePreviewPicture = ({ name, link }) => {
-  imageElement.src = link;
-  imageElement.alt = name;
-  imageCaption.textContent = name;
-  openModalWindow(imageModalWindow);
-};
+let deletePostElement = null;
+let deletePostId = null;
 
-const handleProfileFormSubmit = (evt) => {
-  evt.preventDefault();
-  profileTitle.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
-  closeModalWindow(profileFormModalWindow);
-};
-
-const handleAvatarFromSubmit = (evt) => {
-  evt.preventDefault();
-  profileAvatar.style.backgroundImage = `url(${avatarInput.value})`;
-  closeModalWindow(avatarFormModalWindow);
-};
-
-const handleCardFormSubmit = (evt) => {
-  evt.preventDefault();
-  placesWrap.prepend(
-    createCardElement(
-      {
-        name: cardNameInput.value,
-        link: cardLinkInput.value,
-      },
-      {
-        onPreviewPicture: handlePreviewPicture,
-        onLikeIcon: likeCard,
-        onDeleteCard: deleteCard,
-      }
-    )
-  );
-
-  closeModalWindow(cardFormModalWindow);
-};
-
-// EventListeners
-profileForm.addEventListener("submit", handleProfileFormSubmit);
-cardForm.addEventListener("submit", handleCardFormSubmit);
-avatarForm.addEventListener("submit", handleAvatarFromSubmit);
-
-openProfileFormButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-  openModalWindow(profileFormModalWindow);
-});
-
-profileAvatar.addEventListener("click", () => {
-  avatarForm.reset();
-  openModalWindow(avatarFormModalWindow);
-});
-
-openCardFormButton.addEventListener("click", () => {
-  cardForm.reset();
-  openModalWindow(cardFormModalWindow);
-});
-
-// отображение карточек
-initialCards.forEach((data) => {
-  placesWrap.append(
-    createCardElement(data, {
-      onPreviewPicture: handlePreviewPicture,
-      onLikeIcon: likeCard,
-      onDeleteCard: deleteCard,
-    })
-  );
-});
-
-//настраиваем обработчики закрытия попапов
-const allPopups = document.querySelectorAll(".popup");
-allPopups.forEach((popup) => {
-  setCloseModalWindowEventListeners(popup);
-});
-*/
-
-//настраиваем обработчики закрытия попапов
-const allPopups = document.querySelectorAll(".popup");
-allPopups.forEach((popup) => {
-  setCloseModalWindowEventListeners(popup);
-});
-
-// Функция для рендера всех постов
-const renderPosts = (posts) => {
-    postsContainer.innerHTML = ''; // Очищаем контейнер
-    posts.forEach(post => {
-        postsContainer.append(
-            createPostElement(
-                post,
-                {
-                    onPreviewPicture: handlePreviewPicture,
-                    onLikeIcon: likePost,
-                    onOpenMenu: openContextMenu,
-                    onShowMoreText: showMoreText,
-                    onScrollGallery: scrollTrack
-                }
-            )
-        );
-    });
+const renderLoading = (submitButton, defaultText, isLoading) => {
+    const processedText = defaultText.trim();
+    if (isLoading) {
+        submitButton.textContent =
+            processedText === "Создать" ? "Создание..." : processedText === "Да" ? "Удаление..." : "Сохранение...";
+    } else {
+        submitButton.textContent = processedText;
+    }
 }
 
-// Вызов функций при загрузке страницы
-renderPosts(initialPosts);
+const handlePreviewPicture = ({ name, link }) => {
+  imageElement.src = link;
+  imageElement.alt = name;
+  openModalWindow(imageModalWindow);
+};
+
+const handleRemovePostFormSubmit = (evt) => {
+    evt.preventDefault();
+    const submitButton = removePostForm.querySelector(".popup__button");
+    const defaultText = submitButton.textContent;
+    renderLoading(submitButton, defaultText, true);
+    deletePostOnServer(deletePostId)
+        .then(() => {
+            deletePost(deletePostElement);
+            deletePostElement = null;
+            deletePostId = null;
+            closeModalWindow(removePostModalWindow);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+        .finally(() => {
+            renderLoading(submitButton, defaultText, false);
+        });
+};
+
+const handleDeletePostButton = (postElement, postId) => {
+    deletePostElement = postElement;
+    deletePostId = postId;
+    openModalWindow(removePostModalWindow);
+};
+
+const handleLikePostButton = (likeButton, post, likesCountElement) => {
+    const isLiked = isPostLiked(likeButton);
+
+    likePostOnServer(post, isLiked, currentUserId)
+        .then((updatedPost) => {
+            post.likes = updatedPost.likes;
+
+            likePost(likeButton);
+            changeLikesCount(likesCountElement, updatedPost.likes.length);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// EventListeners
+removePostForm.addEventListener("submit", handleRemovePostFormSubmit);
+
+
+
+
+
+
+
+
+
+//настраиваем обработчики закрытия попапов
+const allPopups = document.querySelectorAll(".popup");
+allPopups.forEach((popup) => {
+  setCloseModalWindowEventListeners(popup);
+});
+
+getUser(currentUserId)
+    .then((currentUser) => mainSideBarProfileBtn.href = `profile.html?user_name=${currentUser.user_name}`)
+    .catch((err) => {
+        console.log(err);
+    });
+
+Promise.all([getPosts(), getUsers()])
+    .then(([posts, users]) => {
+
+        // создаём Map для быстрого доступа к пользователям
+        const usersMap = new Map(users.map(user => [user.id, user]));
+        
+        // рендер постов
+        posts.forEach(post => {
+            const author = usersMap.get(post.userId);
+            // защита от ошибки
+            if (!author) return;
+
+            const postWithAuthor = {
+                ...post,
+                author: {
+                    name: author.name,
+                    avatar: author.avatar
+                }
+            };
+            
+            postsContainer.prepend(
+                createPostElement(
+                    postWithAuthor,
+                    {
+                        onPreviewPicture: handlePreviewPicture,
+                        onLikeIcon: handleLikePostButton,
+                        onOpenMenu: openContextMenu,
+                        onShowMoreText: showMoreText,
+                        onScrollGallery: scrollTrack,
+                        onDeletePost: handleDeletePostButton,
+                        setLikesCount: changeLikesCount,
+                    },
+                    currentUserId,
+                    author.user_name
+                )
+            );
+        });
+
+    })
+    .catch((err) => {
+        console.log(err);
+    });

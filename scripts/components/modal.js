@@ -10,7 +10,7 @@ export const openModalWindow = (modalWindow) => {
   document.addEventListener("keyup", handleEscUp);
 };
 
-const closeModalWindow = (modalWindow) => {
+export const closeModalWindow = (modalWindow) => {
   modalWindow.classList.remove("popup_is-opened");
   document.removeEventListener("keyup", handleEscUp);
 };

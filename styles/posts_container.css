@@ -266,7 +266,7 @@
   fill: var(--animation-fill-color);
   transition: fill 0.3s ease 0.05s;
 }
-
+/*
 .like-icon.is-liked .core {
   fill: var(--animation-fill-color);
   transition: fill 0.3s ease;
@@ -283,6 +283,24 @@
 }
 
 .like-icon:not(.is-liked) .contour {
+  transition: fill 0.1s linear;
+}*/
+.post__like-button_is-active .like-icon .core {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s ease;
+}
+
+.post__like-button_is-active .like-icon .main-body {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s ease 0.05s;
+}
+
+.post__like-button_is-active .like-icon .contour {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s ease 0.06s;
+}
+
+.post__like-button:not(.post__like-button_is-active) .like-icon .contour {
   transition: fill 0.1s linear;
 }
 

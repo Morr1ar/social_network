@@ -21,11 +21,19 @@
 .like-icon > .heart {
     transform-origin: center; /* чтобы анимация шла равномерно из центра а не вниз вправо */
 }
-
+/*
 .like-icon.is-liked > .heart {
     animation: contour-animation 0.3s ease-in 0.1s;
 }
 
 .like-icon.is-liked > .sparks {
+    animation: sparks-visible 0.3s ease-in 0.3s;
+}
+*/
+.post__like-button_is-active .like-icon > .heart {
+    animation: contour-animation 0.3s ease-in 0.1s;
+}
+
+.post__like-button_is-active .like-icon > .sparks {
     animation: sparks-visible 0.3s ease-in 0.3s;
 }
