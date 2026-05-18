@@ -47,9 +47,10 @@
     --text-color: black;
     --page-color: #69e0f8;
     --opacity-page-color: rgb(105, 224, 248, 0.7);
-    /*--hover-color: #FFDE6B;*/
-    --hover-color: #fff4ce;
+    --hover-color: #f2e8c5;
     --system-main-border: 3px solid #FF8AAB;
+    --partner-message-color: #ee9eb5;
+    --sender-message-color: #fff4ce;
 
     /*--block-main-color: linear-gradient(135deg, #FF8AAB 20%, #00B4D8 40%, #00B4D8 40%, #FFC9D3 65%, #FFC9D3 65%, #FFDE6B 90%);
     --block-main-border: 3px solid #FF8AAB;

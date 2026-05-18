@@ -163,3 +163,9 @@ span {
 .context__menu.active {
   display: flex;
 }
+
+.text__overflow-one__line {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

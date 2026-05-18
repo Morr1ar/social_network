@@ -1,0 +1,156 @@
+.chatsContainer {
+    display: flex;
+    flex-direction: column;
+
+    /*border-radius: calc(var(--min-indent) * 2);*/
+    border: var(--block-main-border);
+}
+
+.chatsContainer.not_visible {
+    display: none;
+}
+
+.chat {
+    background-color: var(--block-main-color);
+    padding: var(--min-indent);
+    
+    cursor: pointer;
+}
+
+.chat:hover {
+    background-color: var(--hover-color);
+}
+
+.chat-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--min-indent);
+
+    min-width: 0; /* важно для корректного сжатия внутри flex */
+}
+
+.chat-info {
+    display: inline-flex;
+    align-items: center;
+    color: #000; /* Можно еще подумать над цветами */
+    font-family: Arial, sans-serif; /* И над этим */
+    margin-inline-end: 5px;
+    gap: 10px;
+
+    min-width: 0; /* тоже обязательно */
+    flex: 1;      /* занимает доступное место */
+}
+
+.ava-sm {
+    width: var(--avatar-frame-size-sm);
+    height: var(--avatar-frame-size-sm);
+    mask-image: radial-gradient(circle at 50% 50%, black calc(var(--avatar-size-sm) / 2 - (var(--avatar-size-sm) / 100)), transparent calc(var(--avatar-size-sm) / 2), transparent calc(var(--avatar-size-sm) / 2 + (var(--avatar-size-sm) / 100)), black calc(var(--avatar-size-sm) / 2 + (var(--avatar-size-sm) * 2 / 100)));
+}
+
+.ava-sm .profile-avatar {
+    width: var(--avatar-size-sm);
+    height: var(--avatar-size-sm);
+}
+
+.chat-info__text {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0; /* ключевой момент */
+    flex: 1;
+}
+
+.partner-name {
+    font-weight: bold;
+}
+
+.lastMessage {
+    min-width: 0; /* критично */
+}
+
+#chat__window-details {
+    background-color: var(--block-main-color);
+    padding: var(--min-indent);
+    border: var(--block-main-border);
+}
+
+#chat__window-details.not_visible {
+    display: none;
+}
+
+#chat__window {
+    background-color: var(--block-main-color);
+    padding: var(--min-indent);
+    border: var(--block-main-border);
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--min-indent);
+}
+
+#chat__window.not_visible {
+    display: none;
+}
+
+.messagesContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: var(--min-indent);
+}
+
+.message__item {
+    display: flex;
+}
+
+.message {
+    padding: var(--min-indent);
+    border: var(--block-main-border);
+    border-radius: calc(var(--min-indent) * 2);
+    max-width: 75%;
+}
+
+.partner {
+    background-color: var(--partner-message-color);
+}
+
+.sender {
+    margin-left: auto;
+    background-color: var(--sender-message-color);
+}
+
+.chat-input-area {
+    display: flex;
+    align-items: center;
+    gap: var(--min-indent);
+
+    background-color: var(--system-main-color);
+    padding: var(--min-indent);
+    border: var(--block-main-border);
+}
+
+#chat-input {
+    flex-grow: 1;
+    background-color: var(--block-main-color);
+    border-radius: calc(var(--min-indent) * 2);
+    padding: var(--min-indent);
+    border: var(--block-main-border);
+    font-family: sans-serif;
+    outline: none;
+    resize: none;
+
+    
+}
+
+#send-btn {
+    cursor: pointer;
+    padding: var(--min-indent);
+    border-radius: calc(var(--min-indent) * 2);
+}
+
+#send-btn:hover {
+    background-color: var(--hover-color);
+    outline: var(--system-main-border);
+}

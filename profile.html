@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./styles/variables.css" />
     <link rel="stylesheet" href="./styles/globals.css" />
     <link rel="stylesheet" href="./styles/page.css" />
-    <link rel="stylesheet" href="./styles/main_with_posts.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
     <link rel="stylesheet" href="./styles/profile_header.css" />
     <link rel="stylesheet" href="./styles/posts_container.css" />
     <link rel="stylesheet" href="./styles/main_sidebar.css" />
@@ -29,14 +29,14 @@
     </header>
     <main class="main no_lags_no_scrollbar">
         <div class="mainContent">
-            <section class="profileHeader_and_postsContainer no_lags_no_scrollbar">
+            <section class="mainContent__section no_lags_no_scrollbar">
                 <header class="profileHeader">
                     <div class="profileHeader__in">
                         <div class="profile__ava ava-lg">
                             <img class="profile-avatar user-avatar" src="" alt="Аватар владельца страницы" />
                         </div>
                         <div class="profileHeader__info">
-                            <h2 class="profile-name"></h2>
+                            <h2 class="profile-name text__overflow-one__line"></h2>
                             <div class="profile__info">
                                 <span class="profile-country"></span>
                                 <p class="profile-bio"></p>
@@ -57,7 +57,8 @@
                         </div>
                     </div>
                 </header>
-                <button class="post__add-button" type="button"></button>
+                <button class="profile__button post__add-button" type="button"></button>
+                <a class="profile__button message__write-button" href="">Сообщение</a>
                 <ul class="postsContainer">
                     <!-- хотя вроде можно вместо section какойто div с role="feed"-->
                 </ul>
@@ -168,7 +169,7 @@
                 </label>
                 <label class="popup__label">
                     <input type="text" name="user-name" id="user-name" class="popup__input popup__input_type_name"
-                        placeholder="Имя" pattern="^[a-zA-Zа-яА-ЯёЁ\s\-]{2,40}$"
+                        placeholder="Имя профиля" pattern="^[a-zA-Zа-яА-ЯёЁ\s\-]{2,30}$"
                         data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
                         required />
                     <span class="popup__error" id="user-name-error"></span>
@@ -182,8 +183,8 @@
                 </label>
                 <label class="popup__label">
                     <input type="text" name="user-bio" id="user-bio"
-                        class="popup__input popup__input_type_bio" placeholder="Занятие"
-                        pattern="^.{2,200}$" />
+                        class="popup__input popup__input_type_bio" placeholder="О себе"
+                        maxlength="200" />
                     <span class="popup__error" id="user-bio-error"></span>
                 </label>
                 <label class="popup__label">
@@ -267,7 +268,7 @@
                         <div class="profile__ava ava-sm">
                             <img class="profile-avatar author-avatar" src="" alt="Аватар автора поста" />
                         </div>
-                        <span class="author-name"></span>
+                        <span class="author-name text__overflow-one__line"></span>
                     </a>
                     <div class="contextMenuWrapper">
                         <button class="context__menu-btn" aria-label="Меню действий">
@@ -334,7 +335,7 @@
                             <span class="commentsCount"></span>
                         </div>
                     </div>
-                    <p>time</p>
+                    <span class="post__createdTime">time</span>
                 </div>
             </article>
         </li>

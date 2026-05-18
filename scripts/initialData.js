@@ -100,3 +100,50 @@ export const getTrackedUserName = () => {
     
     return username;
 };
+
+export const getTrackedUserId = () => {
+    const params = new URLSearchParams(window.location.search);
+    const userId = params.get("user_id");
+    
+    return userId;
+};
+
+// Функция для обновления URL без перезагрузки страницы
+export const setChatPartnerId = (userId) => {
+    const url = new URL(window.location);
+    url.searchParams.set('user_id', userId);
+    // или user_id для собеседника, но тогда конфликт с текущим user_id
+    window.history.pushState({}, '', url);
+};
+
+export const initialChats = [
+  {
+    "id": "1",
+    "participants": [
+      "1",
+      "2"
+    ],
+    "lastMessageId": "1",
+    "unreadCount": "1"
+  },
+  {
+    "chatId": "1",
+    "senderId": "2",
+    "text": "Sun lights my way today",
+    "sentAt": "2026-05-16T20:54:29.352Z",
+    "status": "sent",
+    "id": "2"
+  }
+];
+
+// статус сообщения (sent, delivered, read)
+export const initialMessages = [
+  {
+    "id": "1",
+    "chatId": "1",
+    "senderId": "1",
+    "text": "Луна прекрасна, но не сегодня",
+    "sentAt": "2024-01-15T18:30:00Z",
+    "status": "delivered"
+  }
+];

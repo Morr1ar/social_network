@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./styles/variables.css" />
     <link rel="stylesheet" href="./styles/globals.css" />
     <link rel="stylesheet" href="./styles/page.css" />
-    <link rel="stylesheet" href="./styles/main_with_posts.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
     <link rel="stylesheet" href="./styles/posts_container.css" />
     <link rel="stylesheet" href="./styles/main_sidebar.css" />
     <link rel="stylesheet" href="./styles/svg_color.css" />
@@ -28,7 +28,7 @@
     </header>
     <main class="main no_lags_no_scrollbar">
         <div class="mainContent">
-            <section class="profileHeader_and_postsContainer no_lags_no_scrollbar">
+            <section class="mainContent__section no_lags_no_scrollbar">
                 <ul class="postsContainer">
                     <!-- хотя вроде можно вместо section какойто div с role="feed"-->
                 </ul>
@@ -121,7 +121,7 @@
                         <div class="profile__ava ava-sm">
                             <img class="profile-avatar author-avatar" src="" alt="Аватар автора поста" />
                         </div>
-                        <span class="author-name"></span>
+                        <span class="author-name text__overflow-one__line"></span>
                     </a>
                     <div class="contextMenuWrapper">
                         <button class="context__menu-btn" aria-label="Меню действий">
@@ -188,7 +188,7 @@
                             <span class="commentsCount"></span>
                         </div>
                     </div>
-                    <p>time</p>
+                    <span class="post__createdTime">time</span>
                 </div>
             </article>
         </li>

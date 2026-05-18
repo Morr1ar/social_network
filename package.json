@@ -1,0 +1,27 @@
+{
+  "name": "social_network",
+  "version": "1.0.0",
+  "description": "Стартовый набор для выполнения Курсовой Социальной сети",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "deploy": "gh-pages -d dist"
+    },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Morr1ar/social_network.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Morr1ar/social_network/issues"
+  },
+  "homepage": "https://github.com/Morr1ar/social_network#readme",
+  "devDependencies": {
+    "gh-pages": "^6.3.0",
+    "vite": "^8.0.3"
+  }
+}

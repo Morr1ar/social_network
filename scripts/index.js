@@ -172,7 +172,6 @@ Promise.all([getPosts(), getUsers()])
                 )
             );
         });
-
     })
     .catch((err) => {
         console.log(err);

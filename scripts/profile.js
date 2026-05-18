@@ -28,10 +28,12 @@ const mainSideBarProfileBtn = document.getElementById('currentUser__profile-Butt
 const postFormModalWindow = document.querySelector(".popup_type_new-post");
 const postForm = postFormModalWindow.querySelector(".popup__form");
 const postTextInput = postForm.querySelector(".popup__input_type_post-text");
-//const postLinkInput = postForm.querySelector(".popup__input_type_url");
+
 const openPostFormButton = document.querySelector(".post__add-button");
 const addImageBtn = document.getElementById('add-image-btn');
 const imagesContainer = document.getElementById('images-container');
+
+const openChatButton = document.querySelector(".message__write-button");
 
 const profileName = document.querySelector(".profile-name");
 const profileBio = document.querySelector(".profile-bio");
@@ -102,6 +104,7 @@ const openEditProfileForm = () => {
             profileCountryInput.value = trackedUser.country;
             profileBirthdayInput.value = trackedUser.birth_date;
 
+            // ой надо бы еще подключить и обычную валидацию
             profileUserNameInput.addEventListener('blur', async function() {
                 try {
                     const users = await checkUsername(profileUserNameInput.value);
@@ -297,8 +300,6 @@ addImageBtn.addEventListener('click', () => {
 
 
 
-
-
 //настраиваем обработчики закрытия попапов
 const allPopups = document.querySelectorAll(".popup");
 allPopups.forEach((popup) => {
@@ -328,7 +329,14 @@ enableValidation(validationSettings);
 getUserByUsername(getTrackedUserName())
     .then((user) => {
         trackedUserId = user.id;
-        if (currentUserId !== trackedUserId) openPostFormButton.remove();
+
+        if (currentUserId !== trackedUserId) {
+            openPostFormButton.remove();
+            openChatButton.href = `messenger.html?user_id=${trackedUserId}`;
+        } else {
+            openChatButton.remove();
+        }
+
         return getUserPosts(user.id)
             .then((posts) => {
                 return [user, posts];

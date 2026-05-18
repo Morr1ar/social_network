@@ -19,6 +19,8 @@
     justify-content: space-between;
     align-items: center;
     padding: var(--min-indent);
+
+    min-width: 0; /* важно для корректного сжатия внутри flex */
 }
 
 .author-profile__link {
@@ -28,6 +30,9 @@
     font-family: Arial, sans-serif; /* И над этим */
     margin-inline-end: 5px;
     gap: 10px;
+
+    min-width: 0; /* тоже обязательно */
+    flex: 1;      /* занимает доступное место */
 }
 
 .ava-sm {
@@ -43,6 +48,9 @@
 
 .author-name {
     font-weight: bold;
+
+    min-width: 0; /* критично */
+    flex: 1;
 }
 
 
@@ -197,7 +205,7 @@
 
 .text-container .showMoreTextBtn {
     cursor: pointer;
-    color: rebeccapurple;
+    color: var(--system-main-color);
 }
 
 
