@@ -1,3 +1,8 @@
+.mainContent,
+.mainContent__section {
+    min-height: 0;
+}
+
 .chatsContainer {
     display: flex;
     flex-direction: column;
@@ -88,6 +93,8 @@
     display: flex;
     flex-direction: column;
     gap: var(--min-indent);
+    overflow: hidden;
+    overflow-y: auto;
 }
 
 #chat__window.not_visible {
@@ -99,6 +106,8 @@
     flex-direction: column;
     justify-content: flex-end;
     gap: var(--min-indent);
+
+    overflow-anchor: none; /* отменяет авто-скролл браузера при изменении DOM. Нужен для прокрутки чата сообщений вниз */
 }
 
 .message__item {
@@ -129,6 +138,10 @@
     background-color: var(--system-main-color);
     padding: var(--min-indent);
     border: var(--block-main-border);
+}
+
+.chat-input-area.not_visible {
+    display: none;
 }
 
 #chat-input {

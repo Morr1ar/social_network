@@ -1,7 +1,8 @@
-export const toggleChat = (chatsContainer, chatWindowDetails, chatWindow) => {
+export const toggleChat = (chatsContainer, chatWindowDetails, chatWindow, chatInputArea) => {
     chatsContainer.classList.toggle('not_visible');
     chatWindowDetails.classList.toggle('not_visible');
     chatWindow.classList.toggle('not_visible');
+    chatInputArea.classList.toggle('not_visible');
 };
 
 const getChatTemplate = () => {

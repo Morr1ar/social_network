@@ -29,7 +29,7 @@ const chatsContainer = document.querySelector('.chatsContainer');
 const chatWindowDetails = document.getElementById('chat__window-details');
 const chatWindow = document.getElementById('chat__window');
 const messagesContainer = document.querySelector('.messagesContainer');
-//const chatInputArea = document.querySelector('.chat-input-area');
+const chatInputArea = document.querySelector('.chat-input-area');
 const chatInput = document.getElementById('chat-input');
 const sendMessageButton = document.getElementById('send-btn');
 
@@ -100,8 +100,6 @@ const handleChat = async (chat) => {
     messagesContainer.innerHTML = '';
     trackedChatId = chat.id;
 
-    setChatPartnerId(chat.partner.id);
-    toggleChat(chatsContainer, chatWindowDetails, chatWindow);
     insertChatWindowDetails(chat, chatWindowDetails);
     
     getRecentChatMessages(chat.id)
@@ -390,6 +388,14 @@ const handleChat = async (chat) => {
                         currentUserId
                     )
                 );
+            
+            setChatPartnerId(chat.partner.id);
+            toggleChat(chatsContainer, chatWindowDetails, chatWindow, chatInputArea);
+        })
+        .then(() => {
+            console.log(chatWindow.scrollTop, chatWindow.scrollHeight);
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+            console.log(chatWindow.scrollTop, chatWindow.scrollHeight);
         })
         .catch((err) => {
             console.log(err);
