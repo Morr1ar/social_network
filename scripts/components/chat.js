@@ -14,7 +14,7 @@ const getChatTemplate = () => {
 
 export const createChatElement = (
     chat,
-    { onOpenChat }
+    { onOpenChat, onOpenMenu, onDeleteChat }
 ) => {
     const chatElement = getChatTemplate();
     const chatInfo = chatElement.querySelector('.chat-info');
@@ -30,12 +30,20 @@ export const createChatElement = (
     chatInfo.querySelector('.lastMessage').textContent = chat.lastMessage;
 
     chatElement.addEventListener('click', (evt) => {
-        if (evt.target.closest('.contextMenuWrapper')) return;
-        onOpenChat(chat);
+        if (!evt.target.closest('.contextMenuWrapper')) {
+            onOpenChat(chat);
+        } else {
+            if (onOpenMenu) {
+                contextMenuButton.addEventListener("click", () => onOpenMenu(contextMenuButton, contextMenu));
+            }
+        }
     });
 
+    /* Прослушки кнопок в контекстном меню */
+    if (onDeleteChat) {
+        deleteButton.addEventListener('click', () => onDeleteChat(chatElement, chat.id));
+    }
     
-
     return chatElement;
 };
 

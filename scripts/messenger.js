@@ -16,7 +16,7 @@ import {
     deletePostOnServer, likePostOnServer, getUserPosts, checkUsername
 } from './api.js';
 import {
-    getUserChats, getMessage, getRecentChatMessages, /*getOrCreateChat,*/ findChatBetweenUsers, sendMessageOnServer
+    getUserChats, getMessage, getRecentChatMessages, /*getOrCreateChat,*/ findChatBetweenUsers, sendMessageOnServer, deleteChatWithMessages
 } from './api2.js';
 
 // DOM узлы
@@ -33,11 +33,11 @@ const chatInputArea = document.querySelector('.chat-input-area');
 const chatInput = document.getElementById('chat-input');
 const sendMessageButton = document.getElementById('send-btn');
 
-const removePostModalWindow = document.querySelector(".popup_type_remove-post");
-const removePostForm = removePostModalWindow.querySelector(".popup__form");
+const removeChatModalWindow = document.querySelector(".popup_type_remove-chat");
+const removeChatForm = removeChatModalWindow.querySelector(".popup__form");
 
-let deletePostElement = null;
-let deletePostId = null;
+let deleteChatElement = null;
+let deleteChatId = null;
 
 const renderLoading = (submitButton, defaultText, isLoading) => {
     const processedText = defaultText.trim();
@@ -49,23 +49,17 @@ const renderLoading = (submitButton, defaultText, isLoading) => {
     }
 }
 
-const handlePreviewPicture = ({ name, link }) => {
-  imageElement.src = link;
-  imageElement.alt = name;
-  openModalWindow(imageModalWindow);
-};
-
-const handleRemovePostFormSubmit = (evt) => {
+const handleRemoveChatFormSubmit = (evt) => {
     evt.preventDefault();
-    const submitButton = removePostForm.querySelector(".popup__button");
+    const submitButton = removeChatForm.querySelector(".popup__button");
     const defaultText = submitButton.textContent;
     renderLoading(submitButton, defaultText, true);
-    deletePostOnServer(deletePostId)
+    deleteChatWithMessages(deleteChatId)
         .then(() => {
-            deletePost(deletePostElement);
-            deletePostElement = null;
-            deletePostId = null;
-            closeModalWindow(removePostModalWindow);
+            deletePost(deleteChatElement);
+            deleteChatElement = null;
+            deleteChatId = null;
+            closeModalWindow(removeChatModalWindow);
         })
         .catch((err) => {
             console.log(err);
@@ -75,25 +69,10 @@ const handleRemovePostFormSubmit = (evt) => {
         });
 };
 
-const handleDeletePostButton = (postElement, postId) => {
-    deletePostElement = postElement;
-    deletePostId = postId;
-    openModalWindow(removePostModalWindow);
-};
-
-const handleLikePostButton = (likeButton, post, likesCountElement) => {
-    const isLiked = isPostLiked(likeButton);
-
-    likePostOnServer(post, isLiked, currentUserId)
-        .then((updatedPost) => {
-            post.likes = updatedPost.likes;
-
-            likePost(likeButton);
-            changeLikesCount(likesCountElement, updatedPost.likes.length);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const handleDeleteChatButton = (chatElement, chatId) => {
+    deleteChatElement = chatElement;
+    deleteChatId = chatId;
+    openModalWindow(removeChatModalWindow);
 };
 
 const handleChat = async (chat) => {
@@ -112,290 +91,12 @@ const handleChat = async (chat) => {
                     )
                 );
             });
-            messagesContainer.prepend(
-                    createMessageElement(
-                        { text: `message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message
-                        message` },
-                        currentUserId
-                    )
-                );
-            
+
             setChatPartnerId(chat.partner.id);
             toggleChat(chatsContainer, chatWindowDetails, chatWindow, chatInputArea);
         })
         .then(() => {
-            console.log(chatWindow.scrollTop, chatWindow.scrollHeight);
             chatWindow.scrollTop = chatWindow.scrollHeight;
-            console.log(chatWindow.scrollTop, chatWindow.scrollHeight);
         })
         .catch((err) => {
             console.log(err);
@@ -427,7 +128,7 @@ function sendMessage() {
 
 
 // EventListeners
-removePostForm.addEventListener("submit", handleRemovePostFormSubmit);
+removeChatForm.addEventListener("submit", handleRemoveChatFormSubmit);
 
 // Отправка по кнопке
 sendMessageButton.addEventListener('click', sendMessage);
@@ -438,6 +139,11 @@ chatInput.addEventListener('keydown', function(evt) {
         evt.preventDefault();
         sendMessage();
     }
+});
+
+// Кнопка возвращения к списку чатов из окна чата
+chatWindowDetails.querySelector('.backToChats-btn').addEventListener('click', () => {
+    toggleChat(chatsContainer, chatWindowDetails, chatWindow, chatInputArea);
 });
 
 
@@ -510,6 +216,8 @@ getUserChats(currentUserId)
                     chatWithPartner,
                     {
                         onOpenChat: handleChat,
+                        onOpenMenu: openContextMenu,
+                        onDeleteChat: handleDeleteChatButton
                     }
                 )
             );
@@ -518,29 +226,3 @@ getUserChats(currentUserId)
     .catch((err) => {
         console.log(err);
     });
-
-
-const chatWithRecipient = {
-                
-    recipient: {
-        name: 'author.name',
-        avatar: '/example_images/SnowKingAva.jpg'
-    }
-};
-for (let i = 0; i < 15; i++) {
-    chatsContainer.prepend(
-        createChatElement(
-            {
-                lastMessage: 'gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
-                partner: {
-                    name: 'author.name',
-                    avatar: '/example_images/SnowKingAva.jpg'
-                }
-            },
-            {
-                onOpenChat: handleChat,
-            }
-        )
-    );
-};
-const n = 'gggggggggggggggggggggggggggggg'

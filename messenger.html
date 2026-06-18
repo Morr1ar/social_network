@@ -39,24 +39,12 @@
                         </div>
                         <span class="partner-name text__overflow-one__line"></span>
                     </a>
-                    <div class="contextMenuWrapper">
-                        <button class="context__menu-btn" aria-label="Меню действий">
-                            <span class="menu_btn"> ☰ </span>
-                        </button>
-                        <ul class="context__menu">
-                            <li class="deletePostBtn keywords_item">
-                                <span class="keywords">Удалить</span>
-                            </li>
-                            <li class="keywords_item">
-                                <span class="keywords">Не интересно</span>
-                            </li>
-                            <li class="keywords_item">
-                                <span class="keywords">Пожаловаться</span>
-                            </li>
-                        </ul>
-                    </div>
+                    <button class="backToChats-btn" aria-label="вернуться к чатам">
+                        <span class="back_btn"> &larr; </span>
+                    </button>
                 </div>
                 <div id="chat__window" class="not_visible no_lags_no_scrollbar">
+                    <div class="chat-top"></div>
                     <ul class="messagesContainer">
                         
                     </ul>
@@ -127,10 +115,10 @@
         </div>
     </main>
 
-    <div class="popup popup_type_remove-post">
+    <div class="popup popup_type_remove-chat">
         <div class="popup__content">
             <button type="button" class="popup__close"></button>
-            <h3 class="popup__title">Удалить пост?</h3>
+            <h3 class="popup__title">Удалить чат?</h3>
             <form class="popup__form" name="remove-post" novalidate>
                 <button type="submit" class="button popup__button">Да</button>
             </form>

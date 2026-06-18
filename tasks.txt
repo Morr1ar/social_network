@@ -40,3 +40,6 @@ NL-X это New Life Expirience
 
 надо проверить какие поля обязательно заполнять какие необязательно при создании профиля
 надо сделать проверку userName на уникальность
+
+в messenger.js заменить findChatBetweenUsers на getOrCreateChat
+

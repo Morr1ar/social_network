@@ -84,6 +84,21 @@
     display: none;
 }
 
+.backToChats-btn {
+    cursor: pointer;
+    inline-size: 38px;
+    block-size: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.backToChats-btn:hover {
+    background-color: var(--system-main-color);
+}
+
+
 #chat__window {
     background-color: var(--block-main-color);
     padding: var(--min-indent);
@@ -95,10 +110,15 @@
     gap: var(--min-indent);
     overflow: hidden;
     overflow-y: auto;
+
 }
 
 #chat__window.not_visible {
     display: none;
+}
+
+.chat-top {
+    flex-grow: 1;
 }
 
 .messagesContainer {
@@ -108,6 +128,7 @@
     gap: var(--min-indent);
 
     overflow-anchor: none; /* отменяет авто-скролл браузера при изменении DOM. Нужен для прокрутки чата сообщений вниз */
+    flex-shrink: 0;
 }
 
 .message__item {
