@@ -11,6 +11,10 @@
     border: var(--block-main-border);
 }
 
+.chatsContainer:not(:has(*)) {
+    display: none;
+}
+
 .chatsContainer.not_visible {
     display: none;
 }

@@ -34,7 +34,7 @@ export const createChatElement = (
             onOpenChat(chat);
         } else {
             if (onOpenMenu) {
-                contextMenuButton.addEventListener("click", () => onOpenMenu(contextMenuButton, contextMenu));
+                onOpenMenu(contextMenuButton, contextMenu);
             }
         }
     });
