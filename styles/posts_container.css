@@ -205,7 +205,11 @@
 
 .text-container .showMoreTextBtn {
     cursor: pointer;
-    color: var(--system-main-color);
+    color: var(--system-btn-text-main-color);
+}
+
+.text-container .showMoreTextBtn:hover {
+    color: var(--system-btn-text-hover-color);
 }
 
 
@@ -313,17 +317,11 @@
 }
 
 @media (max-width: 768px) {
-    :root {
-        --size-posts-container: calc((700 / 1440) * 100dvw);
-    }
-
     .post__images .scroll-btn {
         display: none;
     }
 }
 
 @media (max-width: 480px) {
-    :root {
-        --size-posts-container: 100dvw;
-    }
+    
 }

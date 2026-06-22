@@ -1,0 +1,11 @@
+.auth-form {
+    
+}
+
+.auth-link {
+    color: var(--system-btn-text-main-color);
+}
+
+.auth-link:hover {
+    color: var(--system-btn-text-hover-color);
+}

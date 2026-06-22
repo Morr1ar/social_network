@@ -1,12 +1,7 @@
 :root {
-    
-    --sidebar-width: 164px; /* может надо поменять на чтото заумное */
-    --sidebar-height: 48px;
-    --size-posts-container: calc((500 / 1440) * 100dvw); /* взято из проекта "Закрывающий тег" */
     --theme-color: #000;
     --heart-contour: var(--theme-color);
     --animation-fill-color: #FF0000;
-    --translateX-image: 0;
 
 
     --main-size: clamp(250px, 100dvw, 700px); /* с нижней границей возможно не совсем поумному но что умеем то могём */
@@ -17,6 +12,10 @@
     --avatar-frame-size-lg: calc(var(--avatar-size-lg) * 1.15);
     --avatar-size-sm: 40px;
     --avatar-frame-size-sm: calc(var(--avatar-size-sm) * 1.15);
+
+    --form-size: clamp(250px, 100dvw, 500px);
+
+    --popup-pudding: calc(var(--min-indent) * 7);
 /*
     --block-main-color: #fff5ee;
     --block-main-border: 3px solid #ffebcd;
@@ -43,14 +42,18 @@
     --block-main-color: #fff4ce;
     --block-main-border: 3px solid #FF8AAB;
     --system-main-color: #ee9eb5;
+    --system-main-border: 3px solid #FF8AAB;
     --loading-color: #ffd7e2;
-    --text-color: black;
     --page-color: #69e0f8;
     --opacity-page-color: rgb(105, 224, 248, 0.7);
     --hover-color: #f2e8c5;
-    --system-main-border: 3px solid #FF8AAB;
     --partner-message-color: #ee9eb5;
     --sender-message-color: #fff4ce;
+
+    --text-color: black;
+    --system-form-color: #fc5584;
+    --system-btn-text-main-color: #fc5584;
+    --system-btn-text-hover-color: #f389a7;
 
     /*--block-main-color: linear-gradient(135deg, #FF8AAB 20%, #00B4D8 40%, #00B4D8 40%, #FFC9D3 65%, #FFC9D3 65%, #FFDE6B 90%);
     --block-main-border: 3px solid #FF8AAB;

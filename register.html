@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Социальная сеть</title>
+    
+    <link rel="stylesheet" href="./styles/variables.css" />
+    <link rel="stylesheet" href="./styles/globals.css" />
+    <link rel="stylesheet" href="./styles/page.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
+
+    <link rel="stylesheet" href="./styles/popup.css" />
+    <link rel="stylesheet" href="./styles/auth_form.css" />
+</head>
+<body class="page">
+    <header class="header">
+        <div class="header__in">
+            <a class="logo__link" href="index.html">
+                <img src="/images/Nika.png" alt="Логотип сайта" class="logo">
+                <span class="logo__name">Project1 version1 model-"NL-X"</span>
+            </a>
+        </div>
+    </header>
+    <main class="main">
+        <div class="popup__content auth-form form_type_register">
+            <h3 class="popup__title">Регистрация</h3>
+            <form class="popup__form" name="register-profile" novalidate>
+                <label class="popup__label">
+                    <input type="text" name="user-name" id="user-name" class="popup__input popup__input_type_name"
+                        placeholder="Имя профиля" pattern="^[a-zA-Zа-яА-ЯёЁ\s\-]{2,30}$"
+                        data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
+                        required />
+                    <span class="popup__error" id="user-name-error"></span>
+                </label>
+                <label class="popup__label">
+                    <input type="text" name="user-userName" id="user-userName" class="popup__input popup__input_type_userName"
+                        placeholder="Никнэйм" pattern="^[a-zA-Z0-9]{2,15}$"
+                        data-error-message="Разрешены только цифры и латинские буквы"
+                        required />
+                    <span class="popup__error" id="user-userName-error"></span>
+                </label>
+                <button type="submit" class="button popup__button popup__button_submit popup__button_disabled" disabled>
+                    Зарегистрироваться
+                </button>
+            </form>
+            <p>Уже есть аккаунт? <a class="auth-link" href="login.html">Войти</a></p>
+        </div>
+    </main>
+
+<!--
+<div class="container">
+    <h2>Регистрация</h2>
+
+    <form>
+        <input type="text" placeholder="Имя профиля" required>
+        <input type="text" placeholder="Никнейм" required>
+        <input type="password" placeholder="Пароль" required>
+
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+
+    <p>Уже есть аккаунт? <a href="login.html">Войти</a></p>
+</div>
+-->
+</body>
+</html>
