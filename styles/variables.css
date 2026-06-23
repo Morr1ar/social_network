@@ -1,7 +1,7 @@
 :root {
-    --theme-color: #000;
-    --heart-contour: var(--theme-color);
-    --animation-fill-color: #FF0000;
+    /* --theme-color: #000; */
+    --heart-contour: #0593b0;
+    --animation-fill-color: #ff2865;
 
 
     --main-size: clamp(250px, 100dvw, 700px); /* с нижней границей возможно не совсем поумному но что умеем то могём */
@@ -53,7 +53,7 @@
     --text-color: black;
     --system-form-color: #fc5584;
     --system-btn-text-main-color: #fc5584;
-    --system-btn-text-hover-color: #f389a7;
+    --system-btn-hover-color: #f389a7;
 
     /*--block-main-color: linear-gradient(135deg, #FF8AAB 20%, #00B4D8 40%, #00B4D8 40%, #FFC9D3 65%, #FFC9D3 65%, #FFDE6B 90%);
     --block-main-border: 3px solid #FF8AAB;

@@ -104,8 +104,7 @@ const openEditProfileForm = () => {
             profileCountryInput.value = trackedUser.country;
             profileBirthdayInput.value = trackedUser.birth_date;
 
-            // ой надо бы еще подключить и обычную валидацию
-            profileUserNameInput.addEventListener('blur', async function() {
+            profileUserNameInput.addEventListener('blur', async function () {
                 try {
                     const users = await checkUsername(profileUserNameInput.value);
                     const isTaken = users.some(user => user.id !== currentUserId);
@@ -267,6 +266,30 @@ removePostForm.addEventListener("submit", handleRemovePostFormSubmit);
 
 openPostFormButton.addEventListener("click", () => {
     postForm.reset();
+
+    const addedFields = postForm.querySelectorAll('.added-li'); 
+    addedFields.forEach(field => field.remove());
+
+
+    const inputs = postForm.querySelectorAll('.popup__input');
+
+    inputs.forEach(input => {
+        input.addEventListener('input', () => {
+            // Проверяем, заполнен ли хоть один из инпутов
+            const isAnyFilled = Array.from(inputs).some(i => i.value.trim() !== '');
+
+            // Если заполнен, удаляем required у всех, чтобы форма отправилась.
+            // Если пустые — возвращаем required обратно
+            inputs.forEach(i => {
+                if (isAnyFilled) {
+                    i.removeAttribute('required');
+                } else {
+                    i.setAttribute('required', 'required');
+                }
+            });
+        });
+    });
+
     clearValidation(postForm, validationSettings);
     openModalWindow(postFormModalWindow);
 });
@@ -292,7 +315,26 @@ addImageBtn.addEventListener('click', () => {
     label.appendChild(input);
     label.appendChild(errorSpan);
 
-    imagesContainer.appendChild(label);
+    const li = document.createElement('li');
+    li.classList.add('added-li');
+    li.appendChild(label);
+
+    input.addEventListener('input', () => {
+        // Проверяем, заполнен ли хоть один из инпутов
+        const isAnyFilled = Array.from(inputs).some(i => i.value.trim() !== '');
+
+        // Если заполнен, удаляем required у всех, чтобы форма отправилась.
+        // Если пустые — возвращаем required обратно
+        inputs.forEach(i => {
+            if (isAnyFilled) {
+                i.removeAttribute('required');
+            } else {
+                i.setAttribute('required', 'required');
+            }
+        });
+    });
+
+    imagesContainer.appendChild(li);
 });
 
 

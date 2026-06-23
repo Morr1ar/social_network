@@ -7,5 +7,5 @@
 }
 
 .auth-link:hover {
-    color: var(--system-btn-text-hover-color);
+    color: var(--system-btn-hover-color);
 }

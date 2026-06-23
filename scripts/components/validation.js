@@ -61,12 +61,9 @@ const setEventListeners = (formElement, settings) => {
     toggleButtonState(inputList, buttonElement, settings);
     inputList.forEach((inputElement) => {
 
-        // Снизу костыль
-        if (inputElement.name === 'user-userName') return; // в общем файле отдельная проверка
-        // Сверху костыль
 
 
-
+        
         inputElement.addEventListener('input', function () {
             checkInputValidity(inputElement, settings);
             toggleButtonState(inputList, buttonElement, settings);

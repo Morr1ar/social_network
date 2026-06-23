@@ -43,3 +43,5 @@ NL-X это New Life Expirience
 
 в messenger.js заменить findChatBetweenUsers на getOrCreateChat
 
+костыль в файле js провиля. проверка никнейма в общем файле
+
