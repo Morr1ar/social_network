@@ -1,14 +1,49 @@
-export const initialProfile =
-{
-    name: 'Simon Petrikov',
-    avatar: '/example_images/SnowKingAva.jpg', // Тут надо чтоб для каждой страницы своя фотка была
-    user_name: '@SnowKing3000',
-    bio: 'Гантер! Верни мне корону!',
-    friends: [],
-    subscriptions: [],
-    country: 'Ice Kingdom',
-    birth_date: '1204.01.01' // дата рождения надо доработать
-};
+export const initialProfiles = [
+  {
+    "id": "1",
+    "name": "Simon Petrikov",
+    "avatar": "http://127.0.0.1:5501/example_images/SnowKingAva.jpg",
+    "user_name": "SnowKing3000",
+    "bio": "Гантер! Верни мне корону!",
+    "friends": [],
+    "subscriptions": [],
+    "country": "Ice Kingdom",
+    "birth_date": "1204-01-01"
+  },
+  {
+    "id": "2",
+    "name": "Louie",
+    "avatar": "/example_images/LouieDuck.jpg",
+    "user_name": "Louie",
+    "bio": "В поиске идеального плана, как сорвать куш и ничего не делать",
+    "friends": [],
+    "subscriptions": [],
+    "country": "Duckburg",
+    "birth_date": "1204-01-01"
+  },
+  {
+    "id": "3",
+    "name": "Morriar Gol D",
+    "avatar": "/example_images/TiggerAva.jpg",
+    "user_name": "Morriar",
+    "bio": "Люблю пасхалки. В моем профиле 4 отсылки на разные произведения.",
+    "friends": [],
+    "subscriptions": [],
+    "country": "The Land of Ooo",
+    "birth_date": "1204-01-01"
+  },
+  {
+    "id": "4",
+    "name": "Ведрфёльнир",
+    "avatar": "/example_images/Reri.png",
+    "user_name": "seer",
+    "bio": "Обладаю уникальной способностью — познавать пророчества всего мира. Они отличаются особенной ценностью, поскольку никто не сомневается в их верности.",
+    "friends": [],
+    "subscriptions": [],
+    "country": "Каэнри'ах",
+    "birth_date": "1204-01-01"
+  }
+];
 
 export const initialPosts = [
   {
@@ -19,13 +54,17 @@ export const initialPosts = [
     ],
     "text": "Мастер Йода — один из самых могущественных, мудрых и старых гранд-мастеров Ордена джедаев во вселенной «Звёздных войн». Это миниатюрное зеленое существо неизвестной расы, прожившее около 900 лет, которое обучало джедаев на протяжении 8 веков, включая таких героев, как Люк Скайуокер, и славится уникальной манерой речи.",
     "likes": [
-      "1",
       "2",
       "3",
-      "4"
+      "4",
+      "1"
     ],
     "createdAt": "2024-01-15T18:30:00Z",
-    "userId": "1"
+    "userId": "1",
+    "author": {
+      "name": "Simon Petrikov",
+      "avatar": "http://127.0.0.1:5501/example_images/SnowKingAva.jpg"
+    }
   },
   {
     "id": "2",
@@ -34,13 +73,17 @@ export const initialPosts = [
     ],
     "text": "Нашел монету, хватит на газировку)",
     "likes": [
-      "1",
       "2",
       "3",
-      "4"
+      "4",
+      "1"
     ],
     "createdAt": "2024-01-14T12:15:00Z",
-    "userId": "2"
+    "userId": "2",
+    "author": {
+      "name": "Louie",
+      "avatar": "/example_images/LouieDuck.jpg"
+    }
   },
   {
     "id": "3",
@@ -54,28 +97,55 @@ export const initialPosts = [
       "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0",
       "https://images.unsplash.com/photo-1505761671935-60b3a7427bad"
     ],
-    "text": "Жить или не жить? Вот в чем вопрос.",
+    "text": "Неинтересный факты: в дестве я думал что это сериал, а не несколько фильмов, и о существовании первой части я узнал только под самый конец моего просмотра этой франшизы, то есть его я посмотрел позже чем другие части.",
     "likes": [
-      "1",
       "2",
       "3",
-      "4"
+      "4",
+      "1"
     ],
     "createdAt": "2024-01-14T12:15:00Z",
-    "userId": "3"
+    "userId": "3",
+    "author": {
+      "name": "Morriar Gol D",
+      "avatar": "/example_images/TiggerAva.jpg"
+    }
   },
   {
     "id": "4",
     "images": [],
     "text": "Пять Великих Грешников Каэнри'ах — это элитная группа ученых и лидеров падшего королевства, которые обрели силу Бездны, превышающую мощь Архонтов, и стали виновниками катастрофы 500 лет назад. В их число входят Ведрфёльнир («Провидец»), Рэйндоттир («Золото»), Сурталоги («Рыцарь Скверны»), Хрофтатюр («Мудрец») и Рери («Лунный Мститель»). Изначально они стремились защитить королевство, но их действия привели к созданию монстров и разрушению мира.",
     "likes": [
-      "1",
       "2",
       "3",
-      "4"
+      "4",
+      "1"
     ],
     "createdAt": "2024-01-14T12:15:00Z",
-    "userId": "4"
+    "userId": "4",
+    "author": {
+      "name": "Ведрфёльнир",
+      "avatar": "/example_images/Reri.png"
+    }
+  },
+  {
+    "id": "5",
+    "images": [
+      "/example_images/Reri.png"
+    ],
+    "text": "Слова Ведрфельнира также повлияли на будущее Лунного мстителя — он предсказал ему несчастливый брак с возлюбленной. Однако в ночь восстания против правителя Ирмина Провидец изменил свое мнение и посоветовал тайному агенту бросить вызов судьбе. В конечном итоге Рери овладел запретными знаниями и отправился за избранницей в иной мир за лунными вратами.",
+    "likes": [
+      "2",
+      "3",
+      "4",
+      "1"
+    ],
+    "createdAt": "2024-01-15T12:15:00Z",
+    "userId": "4",
+    "author": {
+      "name": "Ведрфёльнир",
+      "avatar": "/example_images/Reri.png"
+    }
   }
 ];
 
@@ -92,7 +162,7 @@ export let examplePost = {
     }
 };
 
-export const currentUserId = "1";
+export const currentUserId = "2";
 
 export const getTrackedUserName = () => {
     const params = new URLSearchParams(window.location.search);
@@ -123,15 +193,16 @@ export const initialChats = [
       "1",
       "2"
     ],
-    "lastMessageId": "1",
+    "lastMessageId": "2",
     "unreadCount": "1"
   },
   {
-    "chatId": "1",
-    "senderId": "2",
-    "text": "Sun lights my way today",
-    "sentAt": "2026-05-16T20:54:29.352Z",
-    "status": "sent",
+    "participants": [
+      "1",
+      "4"
+    ],
+    "lastMessageId": null,
+    "unreadCount": "0",
     "id": "2"
   }
 ];
@@ -145,5 +216,13 @@ export const initialMessages = [
     "text": "Луна прекрасна, но не сегодня",
     "sentAt": "2024-01-15T18:30:00Z",
     "status": "delivered"
+  },
+  {
+    "chatId": "1",
+    "senderId": "2",
+    "text": "Sun lights my way today",
+    "sentAt": "2026-05-16T20:54:29.352Z",
+    "status": "sent",
+    "id": "2"
   }
 ];
