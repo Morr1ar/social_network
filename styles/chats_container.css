@@ -143,9 +143,7 @@
     border: var(--block-main-border);
     border-radius: calc(var(--min-indent) * 2);
     max-width: 75%;
-}
 
-.partner {
     background-color: var(--partner-message-color);
 }
 

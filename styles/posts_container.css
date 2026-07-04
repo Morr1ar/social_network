@@ -241,10 +241,6 @@
     cursor: pointer; /* меняет мышку на палец */
 }
 
-.post__comments-button {
-    background-color: red;
-}
-
 .like-icon .main-body {
   fill: transparent;
   transition: fill 0.3s ease;
@@ -315,6 +311,62 @@
 .post__like-button:not(.post__like-button_is-active) .like-icon .contour {
   transition: fill 0.1s linear;
 }
+
+
+
+.post__comments-button {
+    background: transparent url(../images/comments-icon.png) center no-repeat;
+    background-size: 36px 36px; 
+}
+
+.post__comments-button:hover {
+    opacity: 0.6;
+}
+
+.comments__window {
+    padding: var(--min-indent);
+    border-radius: var(--min-indent);
+    overflow: hidden;
+    overflow-y: auto;
+    max-height: 200px;
+}
+
+.comments__window.not_visible {
+    display: none;
+}
+
+.commentsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: var(--min-indent);
+
+    overflow-anchor: none; /* отменяет авто-скролл браузера при изменении DOM. Нужен для прокрутки чата сообщений вниз */
+}
+
+.message__item {
+    display: flex;
+}
+
+.message {
+    padding: var(--min-indent);
+    border: var(--block-main-border);
+    border-radius: calc(var(--min-indent) * 2);
+    max-width: 75%;
+
+    background-color: var(--partner-message-color);
+}
+
+.sender {
+    margin-left: auto;
+    background-color: var(--sender-message-color);
+}
+
+
+
+
+
+
 
 @media (max-width: 768px) {
     .post__images .scroll-btn {

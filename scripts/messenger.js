@@ -8,15 +8,15 @@
 
 import { currentUserId, getTrackedUserId, setChatPartnerId } from "./initialData.js";
 import { openContextMenu } from "./special.js";
-import { toggleChat, createChatElement, insertChatWindowDetails, createMessageElement } from "./components/chat.js";
-import { openModalWindow, setCloseModalWindowEventListeners } from "./components/modal.js";
+import { toggleChat, deleteChat, createChatElement, insertChatWindowDetails, createMessageElement } from "./components/chat.js";
+import { openModalWindow, closeModalWindow, setCloseModalWindowEventListeners } from "./components/modal.js";
 import {
     getUsers, getUser, getUserByUsername,
     updateUser, updateAvatar, getPosts, createPost,
     deletePostOnServer, likePostOnServer, getUserPosts, checkUsername
 } from './api.js';
 import {
-    getUserChats, getMessage, getRecentChatMessages, /*getOrCreateChat,*/ findChatBetweenUsers, sendMessageOnServer, deleteChatWithMessages
+    getUserChats, getMessage, getRecentChatMessages, getOrCreateChat, sendMessageOnServer, deleteChatWithMessages
 } from './api2.js';
 
 // DOM узлы
@@ -56,7 +56,7 @@ const handleRemoveChatFormSubmit = (evt) => {
     renderLoading(submitButton, defaultText, true);
     deleteChatWithMessages(deleteChatId)
         .then(() => {
-            deletePost(deleteChatElement);
+            deleteChat(deleteChatElement);
             deleteChatElement = null;
             deleteChatId = null;
             closeModalWindow(removeChatModalWindow);
@@ -165,23 +165,6 @@ getUser(currentUserId)
     });
 
 trackedUserId = getTrackedUserId();
-if (trackedUserId) {
-    Promise.all([getUser(trackedUserId), findChatBetweenUsers(currentUserId, trackedUserId)])
-        .then(([partner, chat]) => handleChat(
-            {
-                ...chat,
-                partner: {
-                    id: partner.id,
-                    name: partner.name,
-                    avatar: partner.avatar,
-                    user_name: partner.user_name
-                }
-            }
-        ))
-        .catch((err) => {
-            console.log(err);
-        });
-}
 
 getUserChats(currentUserId)
     .then((chats) => {
@@ -193,6 +176,12 @@ getUserChats(currentUserId)
             
             // Получаем данные собеседника
             return Promise.all([getUser(partnerId), getMessage(lastMessageId)])
+                .then(([partner, lastMessage]) => {
+                    if (lastMessage === null) {
+                        return [partner, {text: ''}];
+                    }
+                    return [partner, lastMessage];
+                })
                 .then(([partner, lastMessage]) => ({
                     ...chat,
                     partner: {
@@ -222,6 +211,38 @@ getUserChats(currentUserId)
                 )
             );
         });
+    })
+    .then(() => {
+        if (trackedUserId) {
+            Promise.all([getUser(trackedUserId), getOrCreateChat(currentUserId, trackedUserId)])
+                .then(([partner, chat]) => {
+                    const chatWithPartner = {
+                        ...chat,
+                        partner: {
+                            id: partner.id,
+                            name: partner.name,
+                            avatar: partner.avatar,
+                            user_name: partner.user_name
+                        }
+                    };
+
+                    handleChat(chatWithPartner);
+
+                    chatsContainer.prepend(
+                        createChatElement(
+                            chatWithPartner,
+                            {
+                                onOpenChat: handleChat,
+                                onOpenMenu: openContextMenu,
+                                onDeleteChat: handleDeleteChatButton
+                            }
+                        )
+                    );
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
     })
     .catch((err) => {
         console.log(err);

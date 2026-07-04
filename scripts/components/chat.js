@@ -5,6 +5,10 @@ export const toggleChat = (chatsContainer, chatWindowDetails, chatWindow, chatIn
     chatInputArea.classList.toggle('not_visible');
 };
 
+export const deleteChat = (chatElement) => {
+    chatElement.remove();
+};
+
 const getChatTemplate = () => {
     return document
         .getElementById("chat-template")
@@ -78,8 +82,6 @@ export const createMessageElement = (
 
     if (userId === message.senderId) {
         messageInfo.classList.add('sender');
-    } else {
-        messageInfo.classList.add('partner');
     }
 
     return messageElement;
