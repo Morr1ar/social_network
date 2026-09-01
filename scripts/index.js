@@ -8,7 +8,8 @@
 
 import { currentUserId } from "./initialData.js";
 import { openContextMenu } from "./special.js";
-import { createPostElement, likePost, showMoreText, scrollTrack, changeLikesCount, isPostLiked } from "./components/post.js";
+import { createPostElement, likePost, showMoreText, scrollTrack,
+    changeLikesCount, isPostLiked } from "./components/post.js";
 import { openModalWindow, setCloseModalWindowEventListeners } from "./components/modal.js";
 import {
     getUsers, getUser, getUserByUsername,
@@ -165,7 +166,7 @@ Promise.all([getPosts(), getUsers()])
                         onShowMoreText: showMoreText,
                         onScrollGallery: scrollTrack,
                         onDeletePost: handleDeletePostButton,
-                        setLikesCount: changeLikesCount,
+                        setLikesCount: changeLikesCount
                     },
                     currentUserId,
                     author.user_name

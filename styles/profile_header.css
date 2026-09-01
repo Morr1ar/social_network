@@ -45,6 +45,10 @@
     max-inline-size: 100%;
 }
 
+.profile-user_name::before {
+    content: '@';
+}
+
 .profile-bio {
     max-inline-size: 100%;
 }
@@ -55,7 +59,28 @@
     right: var(--min-indent);
 }
 
+.detailedProfile__in {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: var(--min-indent);
+}
 
+.details-base-info {
+    display: flex;
+    align-items: center;
+    gap: var(--popup-pudding);
+}
+
+.detailedProfile__in h4 {
+    color: var(--system-form-color);
+}
+
+.detailedProfile__in .contextMenuWrapper {
+    position: absolute;
+    top: var(--min-indent);
+    right: var(--min-indent);
+}
 
 
 

@@ -41,7 +41,7 @@ const profileAvatar = document.querySelector(".user-avatar");
 const profileCountry = document.querySelector(".profile-country");
 
 const fullProfileModalWindow = document.querySelector(".popup_type_profile");
-const fullProfileHeaderIn = fullProfileModalWindow.querySelector('.profileHeader__in');
+const fullProfileIn = fullProfileModalWindow.querySelector('.detailedProfile__in');
 
 const profileFormModalWindow = document.querySelector(".popup_type_edit");
 const profileForm = profileFormModalWindow.querySelector('.popup__form');
@@ -86,7 +86,7 @@ const handlePreviewPicture = ({ name, link }) => {
 const handleFullProfileInfo = () => {
     getUser(trackedUserId)
         .then((trackedUser) => {
-            insertProfileFullInfo(trackedUser, fullProfileHeaderIn);
+            insertProfileFullInfo(trackedUser, fullProfileIn);
             openModalWindow(fullProfileModalWindow);
         })
         .catch((err) => {

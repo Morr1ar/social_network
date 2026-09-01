@@ -162,7 +162,7 @@ export let examplePost = {
     }
 };
 
-export const currentUserId = "2";
+export const currentUserId = "1";
 
 export const getTrackedUserName = () => {
     const params = new URLSearchParams(window.location.search);

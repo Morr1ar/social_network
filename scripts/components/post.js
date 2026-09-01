@@ -74,6 +74,9 @@ export const createPostElement = (
     const likesCountElement = postElement.querySelector(".likesCount");
     const leftBtn = postElement.querySelector('.scroll-btn.left');
     const rightBtn = postElement.querySelector('.scroll-btn.right');
+    const commentButton = postElement.querySelector('.post__comments-button');
+    //const commentsCountElement = postElement.querySelector(".commentsCount");
+    const commentsWindow = postElement.querySelector('.comments__window');
     
     const contextMenuButton = postElement.querySelector(".context__menu-btn");
     const contextMenu = postElement.querySelector('.context__menu');
@@ -147,6 +150,10 @@ export const createPostElement = (
         leftBtn.addEventListener('click', () => onScrollGallery(gallerytrack, -1));
         rightBtn.addEventListener('click', () => onScrollGallery(gallerytrack, 1));
     }
+
+    commentButton.addEventListener("click", () => {
+        commentsWindow.classList.toggle("not_visible");
+    });
 
     if (userId !== post.userId) {
         deleteButton.remove();

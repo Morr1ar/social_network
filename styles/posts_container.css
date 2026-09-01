@@ -329,6 +329,9 @@
     overflow: hidden;
     overflow-y: auto;
     max-height: 200px;
+    
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 .comments__window.not_visible {

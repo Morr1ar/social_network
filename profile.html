@@ -139,25 +139,31 @@
     </div>
 
     <div class="popup popup_type_profile">
-        <div class="popup__content profileHeader__in">
-            <div class="profile__ava ava-lg">
-                <img class="profile-avatar user-avatar" src="" alt="Аватар владельца страницы" />
-            </div>
-            <div class="profileHeader__info">
-                <h2 class="profile-name"></h2>
-                <div class="profile__info">
-                    <span class="profile-user_name"></span>
-                    <p class="profile-bio"></p>
-                    <section>
-                        <span class="profile-country"></span>
-                        <span class="profile-birth"></span>
-                    </section>
-                    <section>
-                        <span class="profile-friendsCnt"></span>
-                        <span class="profile-subscriptionsCnt"></span>
-                    </section>
+        <div class="popup__content detailedProfile__in">
+            <section class="details-base-info">
+                <div class="profile__ava ava-lg">
+                    <img class="profile-avatar user-avatar" src="" alt="Аватар владельца страницы" />
                 </div>
-            </div>
+                <div>
+                    <h2 class="profile-name"></h2>
+                    <span class="profile-user_name"></span>
+                </div>
+            </section>
+            <section>
+                <h4>О себе</h4>
+                <p class="profile-bio"></p>
+            </section>
+            <section>
+                <h4>Страна и дата рождения</h4>
+                <span class="profile-country"></span>
+                <span class="profile-birth"></span>
+            </section>
+            <section>
+                <h4>Друзья, подписчики и подписки</h4>
+                <span class="profile-friendsCnt"></span>
+                <span class="profile-subscribersCnt"></span>
+                <span class="profile-subscriptionsCnt"></span>
+            </section>
             <button type="button" class="popup__close"></button>
         </div>
     </div>
@@ -328,6 +334,51 @@
                         </div>
                     </div>
                     <span class="post__createdTime">time</span>
+                </div>
+
+                <div class="comments__window not_visible no_lags_no_scrollbar">
+                    <ul class="commentsContainer">
+
+
+                        <li class="message__item">
+                            <article class="message sender">
+                                <p class="message__text">test1</p>
+                            </article>
+                        </li>
+                        <li class="message__item">
+                            <article class="message">
+                                <p class="message__text">test2</p>
+                            </article>
+                        </li>
+                        <li class="message__item">
+                            <article class="message">
+                                <p class="message__text">test2</p>
+                            </article>
+                        </li>
+                        <li class="message__item">
+                            <article class="message">
+                                <p class="message__text">test2</p>
+                            </article>
+                        </li>
+                        <li class="message__item">
+                            <article class="message">
+                                <p class="message__text">test2</p>
+                            </article>
+                        </li>
+                        <li class="message__item">
+                            <article class="message">
+                                <p class="message__text">test2</p>
+                            </article>
+                        </li>
+                        <li class="message__item">
+                            <article class="message">
+                                <p class="message__text">test2</p>
+                            </article>
+                        </li>
+
+
+                        
+                    </ul>
                 </div>
             </article>
         </li>
